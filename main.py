@@ -42,6 +42,7 @@ else:
      # return ((value - input_min) * (output_max - output_min) / (input_max - input_min)) + output_min
 def scale(value, output_max=100):
       return value*output_max
+
       
 
 running = True
