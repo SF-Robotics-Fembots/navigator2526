@@ -3,27 +3,21 @@ import pygame
 import socket
 import sys 
 #this code actually works so far (convert joystick values to pwm)
-try: 
-	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
-	print ("Socket successfully created")
-except socket.error as err: 
-	print ("socket creation failed with error %s" %(err))
+ 
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+print ("Socket successfully created")
 
 
-port = 80
+host_ip = '10.0.0.58' 
+port = 8080
 
-try: 
-	host_ip = socket.gethostbyname('www.google.com') 
-except socket.gaierror: 
+s.bind((host_ip, port))
 
-	print ("there was an error resolving the host")
-	sys.exit() 
+while True:
+    
+    print ("the socket has successfully connected") 
 
-s.connect((host_ip, port)) 
-
-print ("the socket has successfully connected to google") 
-
-
+'''
 pygame.init()
 
 pygame.joystick.init()
@@ -74,3 +68,5 @@ while running:
             print(f"Axis 0: {axis_0_pwm_value}, Axis 1: {axis_1_pwm_value}, Axis 2: {axis_2_pwm_value}, Axis 3: {axis_3_pwm_value}")
 
 pygame.quit()
+
+'''
