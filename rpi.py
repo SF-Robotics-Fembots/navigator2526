@@ -10,3 +10,5 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
 print(f"received{data!r}")
 
+while True:
+    
