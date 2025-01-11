@@ -65,9 +65,9 @@ while running:
 
             axis_0_pwm_value = joystick_to_pwm(axis_0)
             axis_1_pwm_value = joystick_to_pwm(axis_1)
-            axis_2_pwm_valued = joystick_to_pwm(axis_2)
+            axis_2_pwm_value = joystick_to_pwm(axis_2)
             axis_3_pwm_value = joystick_to_pwm(axis_3)
-            print(f"Axis 0: {axis_0_normalized}, Axis 1: {axis_1_normalized}, Axis 2: {axis_2_normalized}, Axis 3: {axis_3_normalized}")
+            print(f"Axis 0: {axis_0_pwm_value}, Axis 1: {axis_1_pwm_value}, Axis 2: {axis_2_pwm_value}, Axis 3: {axis_3_pwm_value}")
 
 
 pygame.quit()
