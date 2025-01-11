@@ -2,7 +2,7 @@ import pygame
 
 import socket
 import sys 
-
+#this code actually works so far (convert joystick values to pwm)
 try: 
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 	print ("Socket successfully created")
