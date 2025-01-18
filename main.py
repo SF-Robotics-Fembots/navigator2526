@@ -7,10 +7,10 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print ("Socket successfully created")
 
 
-host_ip = '10.0.0.58' 
+host_ip = '10.0.0.97' 
 port = 8080
 
-s.bind((host_ip, port))
+# s.bind((host_ip, port))
 
 # while True:
     
@@ -36,9 +36,9 @@ def joystick_to_pwm(value):
     #   scaled_value = value * 100
     #   normalized_value = scaled_value / 1000
     #   pwm_value = 1500 + (normalized_value * 5000)
-    #   pwm_value = max(1000, min(2000, pwm_value))
+    pwm_value = max(1000, min(2000, pwm_value))
       
-      return int(pwm_value)
+    return int(pwm_value)
 
 
 running = True
