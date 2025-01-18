@@ -80,6 +80,6 @@ while running:
             
             
             time.sleep(1)
-            pygame.quit()
-
+            
+pygame.quit()
 quit = s.close()
