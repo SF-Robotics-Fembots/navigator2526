@@ -82,4 +82,4 @@ while running:
             time.sleep(1)
             
 pygame.quit()
-quit = s.close()
+s.close()
