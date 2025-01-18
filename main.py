@@ -16,8 +16,11 @@ s.listen(1)
 conn, addr = s.accept()
 print ("the socket has successfully connected")
 
-pygame.init()
-print("...")
+try:
+    pygame.init()
+    print("...")
+except:
+    print("canceled")
 pygame.joystick.init()
 
 joystick_count = pygame.joystick.get_count()
