@@ -17,10 +17,11 @@ conn, addr = s.accept()
 print ("the socket has successfully connected")
 
 pygame.init()
-
+print("...")
 pygame.joystick.init()
 
 joystick_count = pygame.joystick.get_count()
+print(joystick_count)
 if joystick_count == 0:
     print("No joystick connected")
 
