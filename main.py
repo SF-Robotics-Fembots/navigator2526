@@ -54,6 +54,7 @@ while running:
     # print("message sent to client")
 
     for event in pygame.event.get():
+        print("----")
         if event.type == pygame.QUIT:
             running = False
         elif event.type == pygame.JOYAXISMOTION:
