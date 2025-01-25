@@ -11,7 +11,7 @@ s.connect((host_ip, port))
 print("1")
 s.sendall(b"hello, world")
 print("...")
-data = s.recv(1024)
+data = s.recv(msg)
 print(f"recieved message: ")
 
 
