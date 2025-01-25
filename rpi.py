@@ -13,6 +13,8 @@ print("1")
 #print("...")
 #data = s.recv(1024)
 #print(f"recieved message: ")
+servoPIN = 22
+p = GPIO.PWM(servoPIN, 50)
 while True:
     data = client_socket.recv(1024)
     pwm_string = data.decode('utf-8')
@@ -32,10 +34,8 @@ while True:
     # GPIO.setup(PWM_PIN, GPIO.OUT)
     # pwm = GPIO.PWM(PWM_PIN, FREQUENCY)
     # pwm.start(0)
-    servoPIN = 22
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(servoPIN, GPIO.OUT)
-    p = GPIO.PWM(servoPIN, 50)  #line 150
     p.start(2.5) # Initialization
     try:
 
