@@ -8,6 +8,7 @@ port = 8080
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((host_ip, port))
+print("1")
 s.sendall(b"hello, world")
 print("...")
 data = s.recv(1024)
