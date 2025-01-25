@@ -50,6 +50,7 @@ while running:
     print("input recieved")
     s.send(msg)
     print("...")
+    
 
 
 '''
