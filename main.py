@@ -69,16 +69,16 @@ while running:
             axis_2_pwm_value = joystick_to_pwm(axis_2)
             axis_3_pwm_value = joystick_to_pwm(axis_3)
 
-            with client_socket:
-                print("............")
-                pwm_values = {
-                    joystick_to_pwm(axis_0),
-                    joystick_to_pwm(axis_1),
-                    joystick_to_pwm(axis_2),
-                    joystick_to_pwm(axis_3),
-                }
-                pwm_string = ','.join(map(str, pwm_values))
-                client_socket.sendall(pwm_string.encode('utf-8'))
+            # with client_socket:
+            print("............")
+            pwm_values = {
+                joystick_to_pwm(axis_0),
+                joystick_to_pwm(axis_1),
+                joystick_to_pwm(axis_2),
+                joystick_to_pwm(axis_3),
+            }
+            pwm_string = ','.join(map(str, pwm_values))
+            client_socket.sendall(pwm_string.encode('utf-8'))
             
             print(f"Axis 0: {axis_0_pwm_value}, Axis 1: {axis_1_pwm_value}, Axis 2: {axis_2_pwm_value}, Axis 3: {axis_3_pwm_value}")
 
