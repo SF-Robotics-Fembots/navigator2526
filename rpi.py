@@ -32,12 +32,13 @@ while True:
     servoPIN = 15
     p = GPIO.PWM(servoPIN, 100)
     SERVER_URL = ""
+    GPIO.setmode(GPIO.BCM)
 
     # GPIO.setmode(GPIO.BCM)
     # GPIO.setup(PWM_PIN, GPIO.OUT)
     # pwm = GPIO.PWM(PWM_PIN, FREQUENCY)
     # pwm.start(0)
-    GPIO.setmode(GPIO.BCM)
+    
     GPIO.setup(servoPIN, GPIO.OUT)
     p.start(2.5) # Initialization
     try:
