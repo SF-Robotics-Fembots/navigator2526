@@ -55,6 +55,7 @@ while running:
 
     for event in pygame.event.get():
         print("----")
+        print(event)
         if event.type == pygame.QUIT:
             running = False
         elif event.type == pygame.JOYAXISMOTION:
