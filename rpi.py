@@ -1,6 +1,6 @@
 import socket
-import requests # type: ignore
-import RPi.GPIO as GPIO # type: ignore
+import requests
+import RPi.GPIO as GPIO
 import time
 
 host_ip = '10.0.0.58' 
