@@ -13,8 +13,10 @@ print("1")
 #print("...")
 #data = s.recv(1024)
 #print(f"recieved message: ")
-message = client_socket.recv(1024).decode('utf-8')
-print(f"message from server {message}")
+while True:
+    message = client_socket.recv(1024).decode('utf-8')
+    print(f"message from server {message}")
+
 
 
 # pwm_values = data.decode('utf-8').strip()
