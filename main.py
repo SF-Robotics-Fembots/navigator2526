@@ -49,6 +49,7 @@ while running:
     msg = msg.encode()
     print("input recieved")
     s.send(msg)
+    print("...")
 
 
 '''
