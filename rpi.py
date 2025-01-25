@@ -13,8 +13,10 @@ print("1")
 #print("...")
 #data = s.recv(1024)
 #print(f"recieved message: ")
+
 servoPIN = 22
 p = GPIO.PWM(servoPIN, 50)
+
 while True:
     data = client_socket.recv(1024)
     pwm_string = data.decode('utf-8')
