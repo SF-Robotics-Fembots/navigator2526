@@ -1,6 +1,7 @@
 import socket
 import requests
 import RPi.GPIO as GPIO # type: ignore
+import time
 
 host_ip = '10.0.0.58' 
 port = 8080
@@ -23,14 +24,32 @@ while True:
     #pwm_values = message.decode('utf-8').strip()
     #print("received pwm values: ", pwm_values)
 
-    PWM_PIN = 15
-    FREQUENCY = 100
+    # PWM_PIN = [0, 1, 2, 14, 15]
+    # FREQUENCY = 100
     SERVER_URL = ""
 
+    # GPIO.setmode(GPIO.BCM)
+    # GPIO.setup(PWM_PIN, GPIO.OUT)
+    # pwm = GPIO.PWM(PWM_PIN, FREQUENCY)
+    # pwm.start(0)
+    servoPIN = 22
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(PWM_PIN, GPIO.OUT)
-    pwm = GPIO.PWM(PWM_PIN, FREQUENCY)
-    pwm.start(0)
+    GPIO.setup(servoPIN, GPIO.OUT)
+    p = GPIO.PWM(servoPIN, 50)  #line 150
+    p.start(2.5) # Initialization
+    try:
+
+        p.ChangeDutyCycle(5)
+        time.sleep(4)
+        p.ChangeDutyCycle(10)
+        time.sleep(4)
+    except KeyboardInterrupt:
+        p.stop()
+    except:
+        #print ("exception")
+
+        GPIO.cleanup()
+
 
     def get_pwm_value():
         # try:
