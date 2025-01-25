@@ -12,7 +12,7 @@ print("1")
 # s.sendall(b"hello, world")
 print("...")
 data = s.recv(1024)
-print(f"recieved message: {data}")
+print(f"recieved message: ", data.decode('utf-8'))
 
 
 # pwm_values = data.decode('utf-8').strip()
