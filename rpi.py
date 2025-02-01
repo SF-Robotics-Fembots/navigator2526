@@ -35,6 +35,7 @@ while True:
 
     while True:
         datain = client_socket.recv(1024)
+        print(datain)
         if not datain: break
         data = datain[-44:]
     
