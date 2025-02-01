@@ -30,10 +30,10 @@ while True:
     # PWM_PIN = [0, 1, 2, 14, 15]
     # FREQUENCY = 100
     servoPIN = 15
+    GPIO.setmode(GPIO.BCM)
     p = GPIO.PWM(servoPIN, 100)
-    GPIO.setmode(GPIO.BCM)
     SERVER_URL = ""
-    GPIO.setmode(GPIO.BCM)
+    
 
     # GPIO.setmode(GPIO.BCM)
     # GPIO.setup(PWM_PIN, GPIO.OUT)
