@@ -23,7 +23,7 @@ def get_pwm_value():
         # try:
         response = requests.get(SERVER_URL)
         response.raise_for_status()
-        pwm_value = response.json().get('pwm_vlaue')
+        pwm_value = response.json().get('pwm_value')
         # if 1000 <= pwm_value <= 2000:
         #     return pwm_value
         # else:
