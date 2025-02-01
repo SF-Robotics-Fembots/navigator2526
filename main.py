@@ -52,6 +52,7 @@ while running:
     # print("input recieved")
     # s.send(msg)
     # print("message sent to client")
+    
 
     for event in pygame.event.get():
         print("----")
@@ -71,11 +72,16 @@ while running:
 
             # with client_socket:
             print("............")
+
             pwm_values = {
-                joystick.get_axis(0),
-                joystick.get_axis(1),
-                joystick.get_axis(2),
-                joystick.get_axis(3)
+                'x':joystick.get_axis(0),
+                'y':joystick.get_axis(1),
+                'r': joystick.get_axis(2),
+                'v':joystick.get_axis(3)
+            }
+
+            pwm_values = {
+        
             }
             pwm_string = ','.join(map(str, pwm_values))
             client_socket.sendall(pwm_string.encode('utf-8'))
