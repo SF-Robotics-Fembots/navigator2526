@@ -33,8 +33,8 @@ def get_pwm_value():
 while True:
     p.start(2.5) # Initialization
     data = client_socket.recv(1024)
-    pwm_string = data.decode('utf-8')
-    pwm_values = list(map(float, pwm_string.split(',')))
+    pwm_float = data.decode('utf-8')
+    pwm_values = list(map(float, pwm_float.split(',')))
     print("recieved pwm values:", pwm_values)
     SERVER_URL = ""
     
