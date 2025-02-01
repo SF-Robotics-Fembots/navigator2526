@@ -28,19 +28,20 @@ def get_pwm_value():
         #     print("PWM value out of range")
         #     return None
 
-data = client_socket.recv(1024)
+
+p.start(2.5) # Initialization
 
 while True:
-    p.start(2.5) # Initialization
+    data = client_socket.recv(1024)
     json_data = data.decode('utf-8')
     pwm_values = json.loads(json_data)
     # pwm_string = data.decode('utf-8')
     # pwm_values = list(map(float, pwm_string.split(',')))
     print("received pwm values:", pwm_values)
-    SERVER_URL = ""
+    #SERVER_URL = ""
     
     try:
-        time.sleep(0.1)
+        #time.sleep(0.1)
     except KeyboardInterrupt:
         p.stop()
     except:
