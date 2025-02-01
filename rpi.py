@@ -38,9 +38,10 @@ while True:
         try:
             datain = client_socket.recv(1024)
             print("DI", datain)
-        except:
+        except socket.timeout:
             # if len(datain) < 5: break
             data = datain[-44:]
+            break
     
     #if not data: break
     print("D", data)
