@@ -31,14 +31,14 @@ def get_pwm_value():
 
 p.start(2.5) # Initialization
 datain = client_socket.recv(1024)
-client_socket.settimeout(0.05)
+client_socket.setblocking(False)
 while True:
 
     while True:
         try:
             datain = client_socket.recv(1024)
             print("DI", datain)
-        except socket.timeout:
+        except BlockingIoError:
             # if len(datain) < 5: break
             data = datain[-44:]
             break
