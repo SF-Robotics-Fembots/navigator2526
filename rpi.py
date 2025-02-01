@@ -33,6 +33,7 @@ p.start(2.5) # Initialization
 
 while True:
     data = client_socket.recv(1024)
+    if not data: break
     json_data = data.decode('utf-8')
     pwm_values = json.loads(json_data)
     # pwm_string = data.decode('utf-8')
