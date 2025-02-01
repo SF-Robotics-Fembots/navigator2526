@@ -23,9 +23,9 @@ while True:
     p.start(2.5) # Initialization
     try:
         p.ChangeDutyCycle(5)
-        time.sleep(4)
+        time.sleep(0.1)
         p.ChangeDutyCycle(10)
-        time.sleep(4)
+        time.sleep(0.1)
     except KeyboardInterrupt:
         p.stop()
     except:
