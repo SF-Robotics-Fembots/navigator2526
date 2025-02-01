@@ -83,7 +83,7 @@ while running:
             # pwm_string = ','.join(map(str, pwm_values))
             # client_socket.sendall(pwm_string.encode('utf-8'))\
             json_data = json.dumps(pwm_values)
-            #client_socket.sendall(json_data.encode('utf-8'))
+            client_socket.sendall(json_data.encode('utf-8'))
             
             print(f"Axis 0: {axis_0}, Axis 1: {axis_1}, Axis 2:{axis_2}, Axis 3: {axis_3}")
             #print(json_data)
