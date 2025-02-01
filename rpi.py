@@ -24,27 +24,27 @@ def get_pwm_value():
         response = requests.get(SERVER_URL)
         response.raise_for_status()
         pwm_value = response.json().get('pwm_vlaue')
-        if 1000 <= pwm_value <= 2000:
-            return pwm_value
-        else:
-            print("PWM value out of range")
-            return None
+        # if 1000 <= pwm_value <= 2000:
+        #     return pwm_value
+        # else:
+        #     print("PWM value out of range")
+        #     return None
 
 while True:
     p.start(2.5) # Initialization
+    data = client_socket.recv(1024)
+    pwm_string = data.decode('utf-8')
+    pwm_values = list(map(int, pwm_string.split(',')))
+    print("recieved pwm values:", pwm_values)
+    SERVER_URL = ""
+    
     try:
         time.sleep(0.1)
     except KeyboardInterrupt:
         p.stop()
     except:
-
         GPIO.cleanup()
 
-    data = client_socket.recv(1024)
-    pwm_string = data.decode('utf-8')
-    pwm_values = list(map(int, pwm_string.split(',')))
-    print("recieved pwm values:", pwm_values)
-
-    SERVER_URL = ""
+    
 
     
