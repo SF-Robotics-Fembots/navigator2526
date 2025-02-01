@@ -41,7 +41,7 @@ while True:
     #SERVER_URL = ""
     
     try:
-        #time.sleep(0.1)
+        time.sleep(0.005)
     except KeyboardInterrupt:
         p.stop()
     except:
