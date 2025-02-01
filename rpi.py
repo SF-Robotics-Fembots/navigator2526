@@ -56,5 +56,6 @@ while True:
         time.sleep(0.005)
     except KeyboardInterrupt:
         p.stop()
+        #figure out how to exit porgram with command
     except:
         GPIO.cleanup()
