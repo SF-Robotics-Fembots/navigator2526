@@ -1,7 +1,5 @@
-import socket
-import requests
+import socket, requests, time, json
 import RPi.GPIO as GPIO # type: ignore
-import time
 
 host_ip = '10.0.0.8' 
 port = 8080
