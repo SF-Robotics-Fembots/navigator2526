@@ -5,7 +5,7 @@ host_ip = '10.0.0.8'
 port = 8080
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.setblocking(False)
+client_socket.settimeout(0.05)
 client_socket.connect((host_ip, port))
 print("1")
 #s.sendall(b"hello, world")
