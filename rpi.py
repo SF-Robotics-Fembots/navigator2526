@@ -3,7 +3,7 @@ import requests
 import RPi.GPIO as GPIO # type: ignore
 import time
 
-host_ip = '10.0.0.58' 
+host_ip = '10.0.0.87' 
 port = 8080
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
