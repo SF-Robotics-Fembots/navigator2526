@@ -29,7 +29,6 @@ while True:
     except KeyboardInterrupt:
         p.stop()
     except:
-        #print ("exception")
 
         GPIO.cleanup()
 
@@ -37,18 +36,8 @@ while True:
     pwm_string = data.decode('utf-8')
     pwm_values = list(map(int, pwm_string.split(',')))
     print("recieved pwm values:", pwm_values)
-    # message = client_socket.recv(1024).decode('utf-8')
-    # print(f"message from server: {message}")
-    #pwm_values = message.decode('utf-8').strip()
-    #print("received pwm values: ", pwm_values)
 
-    # PWM_PIN = [0, 1, 2, 14, 15]
-    # FREQUENCY = 100
     SERVER_URL = ""
-    # GPIO.setmode(GPIO.BCM)
-    # GPIO.setup(PWM_PIN, GPIO.OUT)
-    # pwm = GPIO.PWM(PWM_PIN, FREQUENCY)
-    # pwm.start(0)
 
     def get_pwm_value():
         # try:
@@ -60,27 +49,3 @@ while True:
         else:
             print("PWM value out of range")
             return None
-        
-   #  GPIO.cleanup()
-        # except requests.RequestsException as e:
-        #     print(f"Error fetching pwm values")
-        #     return None
-
-    # def convert_to_duty_cycle(pwm_value):
-    #     return (pwm_value - 1000) / 10
-
-    # try:
-    #     while True:
-    #         pwm_value = get_pwm_value()
-    #         if pwm_value is not None:
-    #             duty_cycle = convert_to_duty_cycle(pwm_value)
-    #             pwm.ChangeDutyCycle(duty_cycle)
-    #             print(f"set duty cycle to {duty_cycle}%")
-    #         time.sleep(1)
-
-    # except KeyboardInterrupt:
-    #     print("Program interrupted")
-
-    # finally:
-    #     pwm.stop()
-    #     GPIO.cleanup()
