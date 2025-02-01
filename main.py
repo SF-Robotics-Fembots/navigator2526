@@ -82,7 +82,7 @@ while running:
             
             print(f"Axis 0: {axis_0_pwm_value}, Axis 1: {axis_1_pwm_value}, Axis 2: {axis_2_pwm_value}, Axis 3: {axis_3_pwm_value}")
 
-            time.sleep(1)
+            time.sleep(0.1)
 
 
 pygame.quit()
