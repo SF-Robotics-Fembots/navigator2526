@@ -41,16 +41,24 @@ def joystick_to_pwm(value):
     return int(pwm_value)
 
 def calculate_rotation_thrusters():
-    added_values = float(axis_1 + axis_2 + axis_3)
+    #*50 or *100 then scale it after
+    axis_1 = int((axis_1)*100)
+    axis_2 = int((axis_2)*100)
+    axis_3 = int((axis_3)*100)
+    added_values = int(axis_1 + axis_2 + axis_3)
     added_values = max(-1, min(1, added_values))
     print("x, y, and r:", added_values)
-    # return(added_values)
+    return int(added_values)
 
-    if float(axis_1 == -1.0 and added_values == 0.0):
-        pass
-    elif float():
-        pass
-
+    # if int(axis_1 == 0):
+    #     pass
+    # elif int(axis_2 == -1):
+    #     pass
+    # elif int(axis_2 == 1):
+    #     pass
+    # else:
+    #     pass
+#if dont get value for 0 move according to that
 
 running = True
 while running:
@@ -76,7 +84,6 @@ while running:
             axis_2 = joystick.get_axis(2)
             axis_3 = joystick.get_axis(3)
 
-        
             axis_0_pwm_value = joystick_to_pwm(axis_0)
             axis_1_pwm_value = joystick_to_pwm(axis_1)
             axis_2_pwm_value = joystick_to_pwm(axis_2)
