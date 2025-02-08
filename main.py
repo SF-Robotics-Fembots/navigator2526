@@ -65,6 +65,9 @@ while running:
             axis_1 = joystick.get_axis(1)
             axis_2 = joystick.get_axis(2)
             axis_3 = joystick.get_axis(3)
+
+            added_values = int(axis_1 + axis_2 + axis_3)
+            print("x, y, and r:", added_values)
         
             axis_0_pwm_value = joystick_to_pwm(axis_0)
             axis_1_pwm_value = joystick_to_pwm(axis_1)
@@ -86,9 +89,6 @@ while running:
             json_data = json.dumps(pwm_values)
             client_socket.sendall(json_data.encode('utf-8'))
             
-            added_values = int(axis_1 + axis_2 + axis_3)
-            print("x, y, and r:", added_values)
-
 
             print(f"Axis 0: {axis_0}, Axis 1: {axis_1}, Axis 2:{axis_2}, Axis 3: {axis_3}")
             #print(json_data)
