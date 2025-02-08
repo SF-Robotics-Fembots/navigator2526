@@ -19,6 +19,7 @@ p = GPIO.PWM(servoPIN, 100)
 
 def get_pwm_value():
         # try:
+        SERVER_URL = ""
         response = requests.get(SERVER_URL)
         response.raise_for_status()
         # pwm_value = response.json().get('pwm_values')
@@ -36,7 +37,7 @@ while True:
     while True:
         try:
             datain = client_socket.recv(1024)
-            print("DI", datain)
+            #print("DI", datain)
         except BlockingIOError:
             # if len(datain) < 5: break
             data = datain[-44:]
@@ -48,7 +49,7 @@ while True:
     # pwm_string = data.decode('utf-8')
     # pwm_values = list(map(float, pwm_string.split(',')))
     print("received pwm values:", pwm_values)
-    #SERVER_URL = ""
+    
     
     try:
         time.sleep(0.005)
