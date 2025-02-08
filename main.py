@@ -40,7 +40,7 @@ def joystick_to_pwm(value):
       
     return int(pwm_value)
 
-def calculate_thrusters(added_values):
+def calculate_thrusters(axis_1, axis_2, axis_3):
     added_values = int(axis_1 + axis_2 + axis_3)
     print(added_values)
     return added_values
