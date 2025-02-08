@@ -40,8 +40,9 @@ def joystick_to_pwm(value):
       
     return int(pwm_value)
 
-def calculate_thrusters(added_values):
+def calculate_rotation_thrusters():
     pass
+
 running = True
 while running:
     #client_socket, client_address = s.accept()
