@@ -45,7 +45,8 @@ def calculate_rotation_thrusters():
     print("x, y, and r:", added_values)
     # return(added_values)
 
-    if 
+    if axis_1 == axis_2:
+        pass
 
 
 
