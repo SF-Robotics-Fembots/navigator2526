@@ -46,7 +46,6 @@ def calculate_rotation_thrusters(axis_0, axis_1, axis_2):
     axis_1 = int((axis_1)*100)
     axis_2 = int((axis_2)*100)
     added_values = int(axis_1 + axis_2 + axis_3)
-    added_values = max(-1, min(1, added_values))
     print("x, y, and r:", added_values)
     return int(added_values)
 
