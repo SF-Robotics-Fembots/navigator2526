@@ -40,15 +40,11 @@ def joystick_to_pwm(value):
       
     return int(pwm_value)
 
-def calculate_rotation_thrusters(axis_0, axis_1, axis_2):
+def calculate_rotation_thrusters():
+    pass
+    # return int(added_values)
     #*50 or *100 then scale it after
-    axis_0 = int((axis_0)*100)
-    axis_1 = int((axis_1)*100)
-    axis_2 = int((axis_2)*100)
-    added_values = int(axis_1 + axis_2 + axis_3)
-    print("x, y, and r:", added_values)
-    return int(added_values)
-
+    
     # if int(axis_1 == 0):
     #     pass
     # elif int(axis_2 == -1):
@@ -89,7 +85,13 @@ while running:
             # axis_2_calculate = calculate_rotation_thrusters(axis_2)
             # print(f"Axis 0: {axis_0_calculate}, Axis 1: {axis_1_calculate}, Axis 2: {axis_2_calculate}")
 
-            calculate_rotation_thrusters()
+            axis_0 = int((axis_0)*100)
+            axis_1 = int((axis_1)*100)
+            axis_2 = int((axis_2)*100)
+            added_values = int(axis_1 + axis_2 + axis_3)
+            print("x, y, and r:", added_values)
+            
+
 
             axis_0_pwm_value = joystick_to_pwm(axis_0)
             axis_1_pwm_value = joystick_to_pwm(axis_1)
