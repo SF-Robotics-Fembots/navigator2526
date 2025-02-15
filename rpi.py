@@ -40,7 +40,7 @@ while True:
             print("DI", datain)
         except BlockingIOError:
             # if len(datain) < 5: break
-            data = datain[-45:]
+            data = datain[-44:]
             break
     #if not data: break
     print("D", data)
