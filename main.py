@@ -42,7 +42,6 @@ def joystick_to_pwm(value):
 def calculate_rotation_thrusters():
     # return int(added_values)
     #*50 or *100 then scale it after
-    
     pass
 #if dont get value for 0 move according to that
 
@@ -82,7 +81,7 @@ while running:
             print("x and r:", added_values)
 
             if int(added_values > 100):
-                power_limit = added_values/(added_values/100)
+                power_limit = int(added_values/(added_values/100))
                 print(power_limit)
             elif int(added_values < 100):
                 print(added_values)
