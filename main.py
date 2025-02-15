@@ -80,7 +80,7 @@ while running:
             added_values = int(axis_0_rotation + axis_2_rotation)
             print("x and r:", added_values)
 
-            if int(added_values > 100):
+            if int(added_values > 100 or added_values < 0):
                 power_limit = int(added_values/(added_values/100))
                 power_limit = max(100, min(-100, power_limit))
                 print(power_limit)
