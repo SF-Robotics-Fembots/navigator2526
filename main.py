@@ -78,8 +78,19 @@ while running:
             axis_0_rotation = int((axis_0)*100) 
             # axis_1_rotation = int((axis_1)*100)
             axis_2_rotation = int((axis_2)*100)
-            added_values = int(axis_0_rotation  + axis_2_rotation)
+            added_values = int(axis_0_rotation + axis_2_rotation)
             print("x and r:", added_values)
+
+            if (added_values > 100):
+                power_limit = added_values/(added_values/100)
+                print(power_limit)
+            elif (added_values < 100):
+                print(added_values)
+            elif (added_values == 100):
+                print(added_values)
+            else:
+                print("something went wrong")
+
             
             axis_0_pwm_value = joystick_to_pwm(axis_0)
             axis_1_pwm_value = joystick_to_pwm(axis_1)
