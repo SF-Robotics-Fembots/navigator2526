@@ -82,6 +82,7 @@ while running:
 
             if int(added_values > 100):
                 power_limit = int(added_values/(added_values/100))
+                power_limit = max(100, min(-100, power_limit))
                 print(power_limit)
             elif int(added_values < 100):
                 print(added_values)
