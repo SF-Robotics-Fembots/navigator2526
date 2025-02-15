@@ -85,9 +85,9 @@ while running:
                 power_limit = added_values/(added_values/100)
                 print(power_limit)
             elif int(added_values < 100):
-                pass
-            elif int(added_values == 100):
-                pass
+                print(added_values)
+            elif int(added_values = 100):
+                print(added_values)
             else:
                 print("something went wrong")
 
