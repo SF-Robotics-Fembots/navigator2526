@@ -85,13 +85,12 @@ while running:
                 power_limit = added_values/(added_values/100)
                 print(power_limit)
             elif (added_values < 100):
-                print(added_values)
+                pass
             elif (added_values == 100):
-                print(added_values)
+                pass
             else:
                 print("something went wrong")
 
-            
             axis_0_pwm_value = joystick_to_pwm(axis_0)
             axis_1_pwm_value = joystick_to_pwm(axis_1)
             axis_2_pwm_value = joystick_to_pwm(axis_2)
