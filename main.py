@@ -134,7 +134,10 @@ while running:
                     'thruster_5': thruster_5_b
                 }
 
-            json_data = json.dumps(pwm_values)
+            # json_data = json.dumps(pwm_values)
+            # client_socket.sendall(json_data.encode('utf-8'))
+
+            json_data = json.dumps(thruster_values)
             client_socket.sendall(json_data.encode('utf-8'))
 
             time.sleep(0.005)
