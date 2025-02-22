@@ -67,20 +67,39 @@ while running:
             thruster_1 = axis_x_scale + axis_r_scale
 
             thruster_percent_ideal = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
+            print("Thruster %:", thruster_percent_ideal)
 
-            print(thruster_percent_ideal)
+            thruster_5_b = thruster_5
+            thruster_4_b = thruster_4
+            thruster_3_b = thruster_3
+            thruster_2_b = thruster_2
+            thruster_1_b = thruster_1
 
-            # thruster_5_b = thruster_5
-            # thruster_4_b = thruster_4
-            # thruster_3_b = thruster_3
+            #if the thruster values are less than 100, then it will pass the if statment
 
+            if (max(thruster_1, thruster_2) > 100):
+                ratio = int(100/max(thruster_1, thruster_2)) #if the thruster value is over 100, then the ratio will take the value back down to 100
+                thruster_1_b = ratio(thruster_1)
+                thruster_2_b = ratio(thruster_2)
+            else:
+                pass
 
-            # rotation = 100/thruster_1
+            thruster_percent_max = [thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b]
+            
+            power_total = sum(abs(num) for num in thruster_percent_max) #taking absolute value of each thruster and adding it together to get total amount of power
+            print("Power Total:", power_total)
 
-            # thruster_1_new = axis_r_scale * thruster_1
-            # thruster_2_new = axis_r_scale * thruster_2
+            power_max = 200 #max amount of power we can use (percentage) ex: 200%
+            power_ratio = power_max/power_total
 
-            # thruster_percent_max = []
+            thruster_5_b = power_ratio * thruster_5_b
+            thruster_4_b = power_ratio * thruster_4_b
+            thruster_3_b = power_ratio * thruster_3_b
+            thruster_2_b = power_ratio * thruster_2_b
+            thruster_1_b = power_ratio * thruster_1_b
+
+            final_percentage = [thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b]
+            print("Final %:", final_percentage)
 
             axis_x_pwm_value = joystick_to_pwm(axis_x)
             axis_y_pwm_value = joystick_to_pwm(axis_y)
@@ -104,4 +123,5 @@ while running:
 
 
 pygame.quit()
+
 client_socket.close()
