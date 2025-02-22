@@ -40,7 +40,7 @@ while True:
             print("DI", datain)
         except BlockingIOError:
             # if len(datain) < 5: break
-            data = datain[-44:] #orignially -44 for pwm_values
+            data = datain[-30:] #orignially -44 for pwm_values
             break
     #if not data: break
     print("D", data)
