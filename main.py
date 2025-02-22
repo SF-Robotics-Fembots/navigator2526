@@ -33,12 +33,13 @@ else:
     joystick.init()
     print(f"Joystick name: {joystick.get_name()}")
 
-
+#from raw values straight to pwm (no other conversions)
 def joystick_to_pwm(value):
     pwm_value = 1500 + (value * 500) #1000-2000
     pwm_value = max(1000, min(2000, pwm_value))
     return int(pwm_value)
 
+#the actual conversion from percentage to pwm
 def joystick_to_pwms(value):
     pwm_value = 1500 + (value * 5) #1000-2000
     pwm_value = max(1000, min(2000, pwm_value))
@@ -83,8 +84,8 @@ while running:
 
             if max(thruster_1, thruster_2) > 100:
                 ratio = int(100/max(thruster_1, thruster_2)) #if the thruster value is over 100, then the ratio will take the value back down to 100
-                thruster_1_b = thruster_1 * ratio
-                thruster_2_b = thruster_2 * ratio
+                new_thruster_1_b = thruster_1 * ratio
+                new_thruster_2_b = thruster_2 * ratio
             else:
                 pass
             print(thruster_1_b, thruster_2_b)
@@ -105,6 +106,7 @@ while running:
             final_percentage = [thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b]
 
             thruster_pwm_values = [joystick_to_pwms(percentage) for percentage in final_percentage]
+            
             axis_x_pwm_value = joystick_to_pwm(axis_x)
             axis_y_pwm_value = joystick_to_pwm(axis_y)
             axis_r_pwm_value = joystick_to_pwm(axis_r)
