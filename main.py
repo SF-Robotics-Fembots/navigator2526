@@ -39,6 +39,12 @@ else:
 #     pwm_value = max(1000, min(2000, pwm_value))
 #     return int(pwm_value)
 
+dead_zone = 0.1
+def apply_dead_zones(value, threshold):
+    if abs(value) < threshold:
+        return 0
+    return value
+
 #the actual conversion from percentage to pwm
 def joystick_to_pwms(value):
     pwm_value = 1500 + (value * 5) #1000-2000
@@ -60,6 +66,11 @@ while running:
             axis_y = joystick.get_axis(1)
             axis_r = joystick.get_axis(2)
             axis_z = joystick.get_axis(3)
+
+            axis_x = apply_dead_zones(axis_x, dead_zone)
+            axis_y = apply_dead_zones(axis_y, dead_zone)
+            axis_r = apply_dead_zones(axis_r, dead_zone)
+            axis_z = apply_dead_zones(axis_z, dead_zone)
 
             axis_x_scale = int((axis_x)*100) 
             axis_y_scale = int((axis_y)*100)
