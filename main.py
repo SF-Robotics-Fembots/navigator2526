@@ -145,6 +145,5 @@ while running:
 
             time.sleep(0.005)
 
-
 pygame.quit()
 client_socket.close()
