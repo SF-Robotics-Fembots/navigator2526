@@ -39,6 +39,11 @@ def joystick_to_pwm(value):
     pwm_value = max(1000, min(2000, pwm_value))
     return int(pwm_value)
 
+def joystick_to_pwms(value):
+    pwm_value = 1500 + (value * 5) #1000-2000
+    pwm_value = max(1000, min(2000, pwm_value))
+    return int(pwm_value)
+
 #*50 or *100 then scale it after
 #if dont get value for 0 move according to that
 
@@ -99,6 +104,8 @@ while running:
 
             final_percentage = [thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b]
 
+            thruster_pwm_values = final_percentage(joystick_to_pwms)
+
             axis_x_pwm_value = joystick_to_pwm(axis_x)
             axis_y_pwm_value = joystick_to_pwm(axis_y)
             axis_r_pwm_value = joystick_to_pwm(axis_r)
@@ -108,6 +115,7 @@ while running:
             print(f"Thruster %:", thruster_percent_ideal)
             print(f"Power Total:", power_total)
             print(f"Final %:", final_percentage)
+            print(f"PWM Value Thrusters: ", thruster_pwm_values)
             print(f"PWM Values: Axis 0: {axis_x_pwm_value}, Axis 1: {axis_r_pwm_value}, Axis 2: {axis_r_pwm_value}, Axis 3: {axis_z_pwm_value}")
 
             pwm_values = {
