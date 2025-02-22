@@ -107,17 +107,29 @@ while running:
 
             thruster_pwm_values = [joystick_to_pwms(percentage) for percentage in final_percentage]
 
-            axis_x_pwm_value = joystick_to_pwm(axis_x)
-            axis_y_pwm_value = joystick_to_pwm(axis_y)
-            axis_r_pwm_value = joystick_to_pwm(axis_r)
-            axis_z_pwm_value = joystick_to_pwm(axis_z)
-
             # print(f"Raw Values: Axis 0: {axis_x}, Axis 1: {axis_y}, Axis 2:{axis_r}, Axis 3: {axis_z}")
             # print(f"Thruster %:", thruster_percent_ideal)
             # print(f"Power Total:", power_total)
             # print(f"Final %:", final_percentage)
             print(f"PWM Thruster Values: ", thruster_pwm_values)
             # print(f"PWM Values: Axis 0: {axis_x_pwm_value}, Axis 1: {axis_r_pwm_value}, Axis 2: {axis_r_pwm_value}, Axis 3: {axis_z_pwm_value}")
+
+            thruster_values = {
+                    'thruster_1': thruster_1_b,
+                    'thruster_2': thruster_2_b,
+                    'thruster_3': thruster_3_b,
+                    'thruster_4': thruster_4_b,
+                    'thruster_5': thruster_5_b
+                }
+            print(thruster_values)
+
+            # json_data = json.dumps(thruster_values)
+            # client_socket.sendall(json_data.encode('utf-8'))
+
+            axis_x_pwm_value = joystick_to_pwm(axis_x)
+            axis_y_pwm_value = joystick_to_pwm(axis_y)
+            axis_r_pwm_value = joystick_to_pwm(axis_r)
+            axis_z_pwm_value = joystick_to_pwm(axis_z)
 
             pwm_values = {
                 'x': axis_x_pwm_value,
@@ -126,20 +138,8 @@ while running:
                 'v': axis_z_pwm_value
             }
 
-            thruster_values = {
-                    'thruster_1': thruster_1_b(thruster_pwm_values),
-                    'thruster_2': thruster_2_b,
-                    'thruster_3': thruster_3_b,
-                    'thruster_4': thruster_4_b,
-                    'thruster_5': thruster_5_b
-                }
-            print(thruster_values)
-
             json_data = json.dumps(pwm_values)
             client_socket.sendall(json_data.encode('utf-8'))
-
-            # json_data = json.dumps(thruster_values)
-            # client_socket.sendall(json_data.encode('utf-8'))
 
             time.sleep(0.005)
 
