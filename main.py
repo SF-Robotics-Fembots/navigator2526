@@ -18,7 +18,7 @@ print ("Socket successfully connected")
 
 try:
     pygame.init()
-    print("...")
+    print("Pygame initialized")
 except:
     print("Canceled")
 pygame.joystick.init()
