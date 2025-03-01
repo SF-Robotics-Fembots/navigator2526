@@ -70,7 +70,7 @@ while running:
             axis_x = apply_dead_zones(axis_x, dead_zone)
             axis_y = apply_dead_zones(axis_y, dead_zone)
             axis_r = apply_dead_zones(axis_r, dead_zone)
-            axis_z = apply_dead_zones(axis_z, dead_zone)
+            # axis_z = apply_dead_zones(axis_z, dead_zone)
             print(f"Dead Zone: Axis X: {axis_x}, Axis Y: {axis_y}, Axis R:{axis_r}, Axis Z: {axis_z}")
 
             axis_x_scale = int((axis_x)*100) 
