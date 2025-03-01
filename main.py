@@ -90,8 +90,8 @@ while running:
 
             #if the thruster values are less than 100, then it will pass the if statment
 
-            if max(thruster_1, thruster_2) > 100:
-                ratio = int(100/max(thruster_1, thruster_2)) #if the thruster value is over 100, then the ratio will take the value back down to 100
+            if max(abs(thruster_1), abs(thruster_2)) > 100:
+                ratio = int(100/max(abs(thruster_1), abs(thruster_2))) #if the thruster value is over 100, then the ratio will take the value back down to 100
                 new_thruster_1_b = thruster_1 * ratio
                 new_thruster_2_b = thruster_2 * ratio
             else:
