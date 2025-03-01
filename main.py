@@ -122,7 +122,7 @@ while running:
             power_totals = sum(abs(num) for num in thruster_percent_max) #taking absolute value of each thruster and adding it together to get total amount of power
             print("___", power_totals)
 
-            power_max = 250 #max amount of power we can use (percentage) ex: 800% (mr. grindstaff) test 250
+            power_max = 800 #max amount of power we can use (percentage) ex: 800% (mr. grindstaff) test 250
             power_ratio = power_max/power_total
             print(power_ratio)
 
@@ -174,7 +174,6 @@ while running:
 
             # json_data = json.dumps(pwm_values)
             # client_socket.sendall(json_data.encode('utf-8'))
-
             time.sleep(0.005)
 
 
