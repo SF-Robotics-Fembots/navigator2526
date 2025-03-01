@@ -66,16 +66,19 @@ while running:
             axis_y = joystick.get_axis(1)
             axis_r = joystick.get_axis(2)
             axis_z = joystick.get_axis(3)
+            print(f"Raw Values: Axis x: {axis_x}, Axis y: {axis_y}, Axis r:{axis_r}, Axis z: {axis_z}")
 
             axis_x = apply_dead_zones(axis_x, dead_zone)
             axis_y = apply_dead_zones(axis_y, dead_zone)
             axis_r = apply_dead_zones(axis_r, dead_zone)
             axis_z = apply_dead_zones(axis_z, dead_zone)
+            print(f"Dead Zone: Axis X: {axis_x}, Axis Y: {axis_y}, Axis R:{axis_r}, Axis Z: {axis_z}")
 
             axis_x_scale = int((axis_x)*100) 
             axis_y_scale = int((axis_y)*100)
             axis_r_scale = int((axis_r)*100)
             axis_z_scale = int((axis_z)*100)
+            print(f"Scale Values: Axis X: {axis_x_scale}, Axis Y: {axis_y_scale}, Axis R:{axis_r_scale}, Axis Z: {axis_z_scale}")
 
             thruster_5 = axis_z_scale
             thruster_4 = axis_z_scale
@@ -84,6 +87,7 @@ while running:
             thruster_1 = axis_x_scale + axis_r_scale
 
             thruster_percent_ideal = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
+            print(thruster_percent_ideal)
 
             thruster_5_b = thruster_5
             thruster_4_b = thruster_4
@@ -99,35 +103,42 @@ while running:
                 new_thruster_2_b = thruster_2 * ratio
             else:
                 pass
-            # print(thruster_1_b, thruster_2_b)
+            print(new_thruster_1_b, new_thruster_2_b)
 
-            thruster_percent_max = [thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b]
+            thruster_percent_max = [thruster_5_b, thruster_4_b, thruster_3_b, new_thruster_2_b, new_thruster_1_b]
+            print(thruster_percent_max)
 
             thruster_5_b = abs(thruster_5_b)
             thruster_4_b = abs(thruster_4_b)
             thruster_3_b = abs(thruster_3_b)
-            thruster_2_b = abs(thruster_2_b)
-            thruster_1_b = abs(thruster_1_b)
+            new_thruster_2_b = abs(thruster_2_b)
+            new_thruster_1_b = abs(thruster_1_b)
+            
+            print(thruster_5_b, thruster_4_b, thruster_3_b, new_thruster_2_b, new_thruster_1_b)
 
-            power_total = thruster_5_b + thruster_4_b + thruster_3_b + thruster_2_b + thruster_1_b
+            power_total = thruster_5_b + thruster_4_b + thruster_3_b + new_thruster_2_b + new_thruster_1_b
             print("...", power_total)
             
             # power_total = sum(abs(num) for num in thruster_percent_max) #taking absolute value of each thruster and adding it together to get total amount of power
 
             power_max = 800 #max amount of power we can use (percentage) ex: 800% (mr. grindstaff)
             power_ratio = power_max/power_total
+            print(power_ratio)
 
             thruster_5_b = power_ratio * thruster_5_b
             thruster_4_b = power_ratio * thruster_4_b
             thruster_3_b = power_ratio * thruster_3_b
-            thruster_2_b = power_ratio * thruster_2_b
-            thruster_1_b = power_ratio * thruster_1_b
+            thruster_2_b = power_ratio * new_thruster_2_b
+            thruster_1_b = power_ratio * new_thruster_1_b
 
             final_percentage = [thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b]
+            print(final_percentage)
 
             thruster_pwm_values = [joystick_to_pwms(percentage) for percentage in final_percentage]
+            print(thruster_pwm_values)
 
             thruster_values = [joystick_to_pwms(thruster_5_b), joystick_to_pwms(thruster_4_b), joystick_to_pwms(thruster_3_b), joystick_to_pwms(thruster_2_b), joystick_to_pwms(thruster_1_b)]
+            print(thruster_values)
 
             # print(f"Raw Values: Axis 0: {axis_x}, Axis 1: {axis_y}, Axis 2:{axis_r}, Axis 3: {axis_z}")
             # print(f"Thruster %:", thruster_percent_ideal)
