@@ -122,23 +122,23 @@ while running:
             power_totals = sum(abs(num) for num in thruster_percent_max) #taking absolute value of each thruster and adding it together to get total amount of power
             print("___", power_totals)
 
-            power_max = 800 #max amount of power we can use (percentage) ex: 800% (mr. grindstaff)
+            power_max = 250 #max amount of power we can use (percentage) ex: 800% (mr. grindstaff) test 250
             power_ratio = power_max/power_total
             print(power_ratio)
 
-            thruster_5_b = thruster_5_b * power_ratio
-            thruster_4_b = thruster_4_b * power_ratio
-            thruster_3_b = thruster_3_b * power_ratio
-            thruster_2_b = thruster_2_b * power_ratio
-            thruster_1_b = thruster_1_b * power_ratio
+            thruster_5_c = thruster_5_b * power_ratio
+            thruster_4_c = thruster_4_b * power_ratio
+            thruster_3_c = thruster_3_b * power_ratio
+            thruster_2_c = thruster_2_b * power_ratio
+            thruster_1_c = thruster_1_b * power_ratio
 
-            final_percentage = [thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b]
+            final_percentage = [thruster_5_c, thruster_4_c, thruster_3_c, thruster_2_c, thruster_1_c]
             print(final_percentage)
 
             thruster_pwm_values = [joystick_to_pwms(percentage) for percentage in final_percentage]
             print(thruster_pwm_values)
 
-            thruster_values = [joystick_to_pwms(thruster_5_b), joystick_to_pwms(thruster_4_b), joystick_to_pwms(thruster_3_b), joystick_to_pwms(thruster_2_b), joystick_to_pwms(thruster_1_b)]
+            thruster_values = [joystick_to_pwms(thruster_5_c), joystick_to_pwms(thruster_4_c), joystick_to_pwms(thruster_3_c), joystick_to_pwms(thruster_2_c), joystick_to_pwms(thruster_1_c)]
             print(thruster_values)
 
             # print(f"Raw Values: Axis 0: {axis_x}, Axis 1: {axis_y}, Axis 2:{axis_r}, Axis 3: {axis_z}")
