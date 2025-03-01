@@ -80,8 +80,8 @@ while running:
             thruster_5 = axis_z_scale
             thruster_4 = axis_z_scale
             thruster_3 = axis_y_scale
-            thruster_2 = axis_x_scale + axis_r_scale #swap - and + orignally (-)
-            thruster_1 = axis_x_scale - axis_r_scale # (+)
+            thruster_2 = axis_x_scale - axis_r_scale
+            thruster_1 = axis_x_scale + axis_r_scale
 
             thruster_percent_ideal = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
 
@@ -102,8 +102,17 @@ while running:
             # print(thruster_1_b, thruster_2_b)
 
             thruster_percent_max = [thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b]
+
+            thruster_5_b = abs(thruster_5_b)
+            thruster_4_b = abs(thruster_4_b)
+            thruster_3_b = abs(thruster_3_b)
+            thruster_2_b = abs(thruster_2_b)
+            thruster_1_b = abs(thruster_1_b)
+
+            power_total = thruster_5_b + thruster_4_b + thruster_3_b + thruster_2_b + thruster_1_b
+            print("...", power_total)
             
-            power_total = sum(abs(num) for num in thruster_percent_max) #taking absolute value of each thruster and adding it together to get total amount of power
+            # power_total = sum(abs(num) for num in thruster_percent_max) #taking absolute value of each thruster and adding it together to get total amount of power
 
             power_max = 800 #max amount of power we can use (percentage) ex: 800% (mr. grindstaff)
             power_ratio = power_max/power_total
