@@ -102,7 +102,7 @@ while running:
                 new_thruster_2_b = thruster_2 * ratio
             else:
                 pass
-            print(new_thruster_1_b, new_thruster_2_b)
+                print(new_thruster_1_b, new_thruster_2_b)
 
             thruster_percent_max = [thruster_5_b, thruster_4_b, thruster_3_b, new_thruster_2_b, new_thruster_1_b]
             print(thruster_percent_max)
