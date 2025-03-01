@@ -124,7 +124,7 @@ while running:
 
             power_max = 800 #max amount of power we can use (percentage) ex: 800% (mr. grindstaff) test 250
             power_ratio = 1
-            if (power_total):
+            if (power_total > power_max):
                 power_ratio = power_max/power_total
             print("Power Ratio: ", power_ratio)
 
