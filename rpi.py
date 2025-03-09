@@ -18,8 +18,7 @@ thrusters = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
 
 servoPIN = [14, 1, 8, 15, 0] #define GPIO pins for thrusters
 GPIO.setmode(GPIO.BCM) #initialize GPIO
-for pin in servoPIN:
-    GPIO.setup(servoPIN, GPIO.OUT)
+GPIO.setup(servoPIN, GPIO.OUT)
 p = GPIO.PWM(servoPIN, 100) #100 Hz frequency
 
 def set_thrusters(thruster, pin):
