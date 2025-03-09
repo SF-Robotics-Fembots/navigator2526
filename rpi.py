@@ -8,11 +8,13 @@ client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.connect((host_ip, port))
 print("1")
 
+#set thrusters on bottomside
 thruster_5 = 0
 thruster_4 = 0
 thruster_3 = 0
 thruster_2 = 0
 thruster_1 = 0
+thrusters = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
 
 servoPIN = [14, 1, 8, 15, 0] #define GPIO pins for thrusters
 GPIO.setmode(GPIO.BCM) #initialize GPIO
@@ -20,9 +22,13 @@ for pin in servoPIN:
     GPIO.setup(servoPIN, GPIO.OUT)
 p = GPIO.PWM(servoPIN, 100) #100 Hz frequency
 
-def set_thrusters_pwms(pwm_values, thrusters):
-    for thruster, pwm_value in zip(thrusters, pwm_values):
-        thruster.ChangeDutyCycle(pwm_value)
+def set_thrusters(thruster, pin):
+    print(f"Setting Pin: {pin} to Thruster: {thruster}")
+
+# def set_thrusters_pwms(pwm_values, thrusters):
+#     for thruster, pwm_value in zip(thrusters, pwm_values):
+#         thruster.ChangeDutyCycle(pwm_value)
+# set_thrusters_pwms(pwm_values, thrusters)
 
 p.start(2.5) # Initialization
 datain = client_socket.recv(1024)
@@ -42,12 +48,9 @@ while True:
     pwm_values = json.loads(json_data)
     print("received pwm values:", pwm_values)
 
-    thrusters = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
-
-    set_thrusters_pwms(pwm_values, thrusters)
-
-    for thruster in thrusters:
-        pass
+    for thruster, pin in zip(thrusters, servoPIN):
+        set_thrusters(thruster, pin)
+        
          #thruster = ___ 
     
     
