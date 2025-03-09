@@ -1,4 +1,4 @@
-import socket, time, json
+import socket, time, json, pwmio
 import RPi.GPIO as GPIO # type: ignore
 
 host_ip = '10.0.0.8' 
@@ -79,6 +79,9 @@ while True:
     json_data = data.decode('utf-8')
     pwm_values = json.loads(json_data)
     print("received pwm values:", pwm_values)
+
+    pwm = pwmio.PWMOut(board.LED)
+    pwm.duty_cycle = 2 ** 15
 
     throttlePW = int(pwm_values[4]/10000*65536)
     thruster_e.duty_cycle = throttlePW
