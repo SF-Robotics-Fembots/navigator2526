@@ -1,7 +1,7 @@
-import socket, time, json, pwmio
+import socket, time, json, Adafruit_PWMServo #Adafruit-PCA9685
 import RPi.GPIO as GPIO # type: ignore
 
-host_ip = '10.0.0.8' 
+host_ip = '10.0.0.8'
 port = 8080
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -80,22 +80,21 @@ while True:
     pwm_values = json.loads(json_data)
     print("received pwm values:", pwm_values)
 
-    pwm = pwmio.PWMOut(board.LED)
-    pwm.duty_cycle = 2 ** 15
+    
 
-    throttlePW = int(pwm_values[4]/10000*65536)
+    throttlePW = int(pwm_values[0]/10000*65536)
     thruster_e.duty_cycle = throttlePW
 
-    throttlePW = int(pwm_values[3]/10000*65536)
+    throttlePW = int(pwm_values[1]/10000*65536)
     thruster_d.duty_cycle = throttlePW
 
     throttlePW = int(pwm_values[2]/10000*65536)
     thruster_c.duty_cycle = throttlePW
 
-    throttlePW = int(pwm_values[1]/10000*65536)
+    throttlePW = int(pwm_values[3]/10000*65536)
     thruster_b.duty_cycle = throttlePW
 
-    throttlePW = int(pwm_values[0]/10000*65536)
+    throttlePW = int(pwm_values[4]/10000*65536)
     thruster_a.duty_cycle = throttlePW
 
     # for thruster, pin in zip(thrusters, servoPIN):
