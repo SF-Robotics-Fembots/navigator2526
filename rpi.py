@@ -1,5 +1,5 @@
 import socket, time, json, sys
-import adafruit_pca9685
+import Adafruit_pca9685
 import board
 import busio
 import pwmio
