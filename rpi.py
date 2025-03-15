@@ -60,7 +60,7 @@ thrusters = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
 # p.start(2.5)
 
 i2c = busio.I2C(board.SCL, board.SDA)
-print(i2c)
+print("{i2c}")
 listofdev = i2c.scan()
 print(listofdev)
 
