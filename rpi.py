@@ -3,7 +3,7 @@ import busio
 import pwmio
 import RPi.GPIO as GPIO # type: ignore
 from Adafruit_PCA9685 import PCA9685
-from Adafruit_ServoKit import ServoKit
+from adafruit_servokit import ServoKit
 import socket, time, json, sys
 
 host_ip = '172.20.10.11'#'10.0.0.8'
