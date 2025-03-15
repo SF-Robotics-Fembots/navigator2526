@@ -65,13 +65,6 @@ shield = PCA9685(i2c)
 kit = ServoKit(channels=16)
 shield.frequency = 100
 
-def set_thrusters(thruster, pin):
-    print(f"Setting Pin: {pin} to Thruster: {thruster}")
-
-# def set_thrusters_pwms(pwm_values, thrusters):
-#     for thruster, pwm_value in zip(thrusters, pwm_values):
-#         thruster.ChangeDutyCycle(pwm_value)
-# set_thrusters_pwms(pwm_values, thrusters)
 thrusterChannel5 = shield.channels[0]
 thrusterChannel4 = shield.channels[1]
 thrusterChannel3 = shield.channels[2]
@@ -84,7 +77,7 @@ client_socket.setblocking(False)
 while True:
     while True:
         try:
-            datain = client_socket.recv(1024)
+            datain = (client_socket.recv(1024)).decode()
             print("DI", datain)
         except BlockingIOError:
             # if len(datain) < 5: break
