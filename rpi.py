@@ -14,12 +14,12 @@ client_socket.connect((host_ip, port))
 print("1")
 
 #set thrusters on bottomside
-thruster_e = 0 #5
-thruster_d = 0 #4
-thruster_c = 0 #3
-thruster_b = 0 #2
-thruster_a = 0 #1
-thrusters = [thruster_e, thruster_d, thruster_c, thruster_b, thruster_a]
+thruster_5 = 0 #5
+thruster_4 = 0 #4
+thruster_3 = 0 #3
+thruster_2 = 0 #2
+thruster_1 = 0 #1
+thrusters = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
 
 # servoPIN = [14, 1, 8, 15, 0] #define GPIO pins for thrusters
 # GPIO.setmode(GPIO.BCM) #initialize GPIO
@@ -71,7 +71,12 @@ def set_thrusters(thruster, pin):
 #     for thruster, pwm_value in zip(thrusters, pwm_values):
 #         thruster.ChangeDutyCycle(pwm_value)
 # set_thrusters_pwms(pwm_values, thrusters)
-thruster_e = pwmio.PWMOut(board.14) #initalize thruster 5
+thrusterChannel5 = shield.channels[0]
+thrusterChannel4 = shield.channels[1]
+thrusterChannel3 = shield.channels[2]
+thrusterChannel2 = shield.channels[3]
+thrusterChannel1 = shield.channels[4]
+thrusterChannel5.duty_cycle = 0x2666
 
 datain = client_socket.recv(1024)
 client_socket.setblocking(False)
@@ -91,19 +96,24 @@ while True:
     print("received pwm values:", pwm_values)
 
     throttlePW = int(pwm_values[0]/10000*65536)
-    thruster_e.duty_cycle = throttlePW
+    thruster_5.duty_cycle = throttlePW
+    time.sleep(0)
 
     throttlePW = int(pwm_values[1]/10000*65536)
-    thruster_d.duty_cycle = throttlePW
+    thruster_4.duty_cycle = throttlePW
+    time.sleep(0)
 
     throttlePW = int(pwm_values[2]/10000*65536)
-    thruster_c.duty_cycle = throttlePW
+    thruster_3.duty_cycle = throttlePW
+    time.sleep(0)
 
     throttlePW = int(pwm_values[3]/10000*65536)
-    thruster_b.duty_cycle = throttlePW
+    thruster_2.duty_cycle = throttlePW
+    time.sleep(0)
 
     throttlePW = int(pwm_values[4]/10000*65536)
-    thruster_a.duty_cycle = throttlePW
+    thruster_1.duty_cycle = throttlePW
+    time.sleep(0)
 
     # for thruster, pin in zip(thrusters, servoPIN):
     #     set_thrusters(thruster, pin)
