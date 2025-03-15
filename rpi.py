@@ -59,8 +59,8 @@ thrusters = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
 # p = GPIO.PWM(servoPIN_1, 100)
 # p.start(2.5)
 
-# i2c = busio.I2C(board.SCL, board.SDA)
-i2c = board.I2C() # uses board.SCL and board.SDA
+i2c = busio.I2C(board.SCL, board.SDA)
+#i2c = board.I2C() # uses board.SCL and board.SDA
 shield = PCA9685(i2c)
 kit = ServoKit(channels=16)
 shield.frequency = 100
