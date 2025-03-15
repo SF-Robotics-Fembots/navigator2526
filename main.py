@@ -7,7 +7,7 @@ import time, json
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 print ("Socket successfully created")
 
-host_ip = '10.19.209.3'#'10.0.0.87'
+host_ip = '172.20.10.11'#'10.0.0.87'
 port = 8080
 
 s.bind(('', port)) #host_ip
