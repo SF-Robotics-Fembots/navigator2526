@@ -1,9 +1,10 @@
-import socket, time, json
-#from adafruit_pca9685 import PCA9568
+import socket, time, json, pygame
 import adafruit_pca968
 import board
+import busio
 import pwmio
 import RPi.GPIO as GPIO # type: ignore
+from adafruit_servokit import ServoKit
 
 host_ip = '10.0.0.8'
 port = 8080
@@ -28,36 +29,40 @@ thrusters = [thruster_e, thruster_d, thruster_c, thruster_b, thruster_a]
 # for pwm in pwm_objects:
 #     pwm_objects.start(2.5) # Initialization
 
-servoPIN_5 = 14
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(servoPIN_5, GPIO.OUT)
-p = GPIO.PWM(servoPIN_5, 100)
-p.start(2.5)
+# servoPIN_5 = 14
+# GPIO.setmode(GPIO.BCM)
+# GPIO.setup(servoPIN_5, GPIO.OUT)
+# p = GPIO.PWM(servoPIN_5, 100)
+# p.start(2.5)
 
-servoPIN_4 = 1
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(servoPIN_4, GPIO.OUT)
-p = GPIO.PWM(servoPIN_4, 100)
-p.start(2.5)
+# servoPIN_4 = 1
+# GPIO.setmode(GPIO.BCM)
+# GPIO.setup(servoPIN_4, GPIO.OUT)
+# p = GPIO.PWM(servoPIN_4, 100)
+# p.start(2.5)
 
-servoPIN_3 = 8
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(servoPIN_3, GPIO.OUT)
-p = GPIO.PWM(servoPIN_3, 100)
-p.start(2.5)
+# servoPIN_3 = 8
+# GPIO.setmode(GPIO.BCM)
+# GPIO.setup(servoPIN_3, GPIO.OUT)
+# p = GPIO.PWM(servoPIN_3, 100)
+# p.start(2.5)
 
-servoPIN_2 = 15
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(servoPIN_2, GPIO.OUT)
-p = GPIO.PWM(servoPIN_2, 100)
-p.start(2.5)
+# servoPIN_2 = 15
+# GPIO.setmode(GPIO.BCM)
+# GPIO.setup(servoPIN_2, GPIO.OUT)
+# p = GPIO.PWM(servoPIN_2, 100)
+# p.start(2.5)
 
-servoPIN_1 = 0
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(servoPIN_1, GPIO.OUT)
-p = GPIO.PWM(servoPIN_1, 100)
-p.start(2.5)
+# servoPIN_1 = 0
+# GPIO.setmode(GPIO.BCM)
+# GPIO.setup(servoPIN_1, GPIO.OUT)
+# p = GPIO.PWM(servoPIN_1, 100)
+# p.start(2.5)
 
+i2c = busio.I2C(board.SCL, board.SDA)
+shield = adafruit_pca9685.PCA9685(i2c)
+kit = ServoKit(channels=16)
+shield.frequency = 100
 
 def set_thrusters(thruster, pin):
     print(f"Setting Pin: {pin} to Thruster: {thruster}")
@@ -66,6 +71,7 @@ def set_thrusters(thruster, pin):
 #     for thruster, pwm_value in zip(thrusters, pwm_values):
 #         thruster.ChangeDutyCycle(pwm_value)
 # set_thrusters_pwms(pwm_values, thrusters)
+thruster_e = pwmio.PWMOut(board.14) #initalize thruster 5
 
 datain = client_socket.recv(1024)
 client_socket.setblocking(False)
@@ -83,8 +89,6 @@ while True:
     json_data = data.decode('utf-8')
     pwm_values = json.loads(json_data)
     print("received pwm values:", pwm_values)
-
-    
 
     throttlePW = int(pwm_values[0]/10000*65536)
     thruster_e.duty_cycle = throttlePW
