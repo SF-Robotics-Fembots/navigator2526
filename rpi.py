@@ -92,8 +92,8 @@ while True:
             break
     #if not data: break
     print("D", data)
-    json_data = data.decode('utf-8')
-    pwm_values = json.loads(json_data)
+    #json_data = data.decode('utf-8')
+    pwm_values = json.loads(data)
     print("received pwm values:", pwm_values)
 
     throttlePW = int(pwm_values[0]/10000*65536)
