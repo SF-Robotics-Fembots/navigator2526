@@ -1,10 +1,10 @@
 import socket, time, json, sys
-from adafruit_pca9685 import PCA9685
+import adafruit_pca9685
 import board
 import busio
 import pwmio
 import RPi.GPIO as GPIO # type: ignore
-from adafruit_servokit import ServoKit
+#from Adafruit_servokit import ServoKit
 
 host_ip = '10.0.0.8'
 port = 8080
@@ -60,7 +60,7 @@ thrusters = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
 # p.start(2.5)
 
 i2c = busio.I2C(board.SCL, board.SDA)
-shield = adafruit_pca9685.PCA9685(i2c)
+shield = Adafruit_PCA9685.PCA9685(i2c)
 kit = ServoKit(channels=16)
 shield.frequency = 100
 
