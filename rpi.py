@@ -1,6 +1,6 @@
 import board
 import busio
-#import pwmio
+import pwmio
 #import RPi.GPIO as GPIO # type: ignore
 import adafruit_pca9685 #import PCA9685
 import adafruit_servokit
