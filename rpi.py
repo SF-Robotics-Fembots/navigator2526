@@ -1,6 +1,7 @@
 import socket, time, json
 #from adafruit_pca9685 import PCA9568
 import adafruit_pca968
+import board
 import pwmio
 import RPi.GPIO as GPIO # type: ignore
 
