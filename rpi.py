@@ -6,7 +6,7 @@ import pwmio
 import RPi.GPIO as GPIO # type: ignore
 #from Adafruit_servokit import ServoKit
 
-host_ip = '10.0.0.8'
+host_ip = '10.19.209.3'#'10.0.0.8'
 port = 8080
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
