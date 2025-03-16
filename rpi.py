@@ -69,11 +69,11 @@ shield = adafruit_pca9685.PCA9685(i2c)
 kit = ServoKit(channels=16)
 shield.frequency = 100
 
-thrusterChannel5 = shield.channels[0]
+thrusterChannel5 = shield.channels[14]
 thrusterChannel4 = shield.channels[1]
-thrusterChannel3 = shield.channels[2]
-thrusterChannel2 = shield.channels[3]
-thrusterChannel1 = shield.channels[4]
+thrusterChannel3 = shield.channels[8]
+thrusterChannel2 = shield.channels[15]
+thrusterChannel1 = shield.channels[0]
 thrusterChannel5.duty_cycle = 0x2666
 
 datain = client_socket.recv(1024)
@@ -94,23 +94,23 @@ while True:
     print("received pwm values:", pwm_values)
 
     throttlePW = int(pwm_values[0]/10000*65536)
-    thruster_5.duty_cycle = throttlePW
+    thrusterChannel5.duty_cycle = throttlePW
     time.sleep(0)
 
     throttlePW = int(pwm_values[1]/10000*65536)
-    thruster_4.duty_cycle = throttlePW
+    thrusterChannel4.duty_cycle = throttlePW
     time.sleep(0)
 
     throttlePW = int(pwm_values[2]/10000*65536)
-    thruster_3.duty_cycle = throttlePW
+    thrusterChannel3.duty_cycle = throttlePW
     time.sleep(0)
 
     throttlePW = int(pwm_values[3]/10000*65536)
-    thruster_2.duty_cycle = throttlePW
+    thrusterChannel2.duty_cycle = throttlePW
     time.sleep(0)
 
     throttlePW = int(pwm_values[4]/10000*65536)
-    thruster_1.duty_cycle = throttlePW
+    thrusterChannel1.duty_cycle = throttlePW
     time.sleep(0)
 
     # for thruster, pin in zip(thrusters, servoPIN):

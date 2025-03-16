@@ -16,6 +16,7 @@ client_socket, client_address = s.accept()
 print ("Socket successfully connected")
 
 
+
 try:
     pygame.init()
     print("Pygame initialized")
