@@ -3,7 +3,7 @@ import busio
 import pwmio
 #import RPi.GPIO as GPIO # type: ignore
 import adafruit_pca9685 #import PCA9685
-import adafruit_servokit
+from adafruit_servokit import ServoKit
 import socket, time, json, sys
 
 host_ip = '172.20.10.11'#'10.0.0.8'
@@ -66,7 +66,7 @@ print(listofdev)
 
 i2c = board.I2C() # uses board.SCL and board.SDA
 shield = adafruit_pca9685.PCA9685(i2c)
-kit = adafruit_servokit(channels=16)
+kit = adafruit_servokit.ServoKit(channels=16)
 shield.frequency = 100
 
 thrusterChannel5 = shield.channels[0]
