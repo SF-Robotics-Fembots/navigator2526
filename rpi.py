@@ -123,8 +123,8 @@ while True:
         sys.exit()
         # p.stop()
         #figure out how to exit porgram with command
-    except:
-        GPIO.cleanup()
+    # except:
+    #     GPIO.cleanup()
 
 # def get_pwm_value():
 #         try:
