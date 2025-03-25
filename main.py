@@ -68,6 +68,11 @@ while running:
             axis_z = joystick.get_axis(3) #vertical (up and down)
             print(f"Raw Values: Axis x: {axis_x}, Axis y: {axis_y}, Axis r:{axis_r}, Axis z: {axis_z}")
 
+            #slow mode
+            #button on joystick that if the toggle is pressed first - slow mode, second - back to normal
+            #take a multiplier, slow mode multiply by 50% eveyrtime button is pressed, toggle between fast and slow mode, in fast mode 1.0, in slow mode 50% (joystick level), joystick is half as senstivive, everything is same for x,y,z,r make it as a variable (slow down ratio)
+            #rotate might need a bigger reduction
+
             axis_x = apply_dead_zones(axis_x, dead_zone)
             axis_y = apply_dead_zones(axis_y, dead_zone)
             axis_r = apply_dead_zones(axis_r, dead_zone)
