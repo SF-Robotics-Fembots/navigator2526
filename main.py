@@ -95,7 +95,7 @@ while running:
             #         current_mode_ratio = fast_mode_ratio
             
             # previous_button_state = button_12
-            if pygame.joystick.Joystick(0).get_button(11): slow_speed = 0
+            if pygame.joystick.Joystick(0).get_button(10): slow_speed = 0
             if pygame.joystick.Joystick(0).get_button(11): slow_speed = 1
 
             x_speed = (pygame.joystick.Joystick(0).get_axis(0))
