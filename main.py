@@ -1,7 +1,7 @@
 import pygame
 import socket
 import time, json
-from pynput import keyboard
+#from pynput import keyboard
 #this code actually works so far (convert joystick values to pwm)
 #this code works (sending and recieving messages back and forth)
 
@@ -32,12 +32,6 @@ else:
     joystick = pygame.joystick.Joystick(0)
     joystick.init()
     print(f"Joystick name: {joystick.get_name()}")
-
-#from raw values straight to pwm (no other conversions)
-# def joystick_to_pwm(value):
-#     pwm_value = 1500 + (value * 500) #1000-2000
-#     pwm_value = max(1000, min(2000, pwm_value))
-#     return int(pwm_value)
 
 dead_zone = 0.1
 def apply_dead_zones(value, threshold):
@@ -83,19 +77,6 @@ while running:
             # everything is same for x,y,z,r
             # make it as a variable (slow down ratio)
             #rotate might need a bigger reduction
-            
-            # fast_mode_ratio = 1.0
-            # current_mode_ratio = fast_mode_ratio
-            # previous_button_state = 0
-            # button_12 = joystick.get_button(11)
-            # print(button_12)
-            # if button_12 == 1 and previous_button_state == 0:
-            #     if current_mode_ratio == fast_mode_ratio:
-            #         current_mode_ratio = slow_mode_ratio
-            #     else:
-            #         current_mode_ratio = fast_mode_ratio
-            
-            # previous_button_state = button_12
             if pygame.joystick.Joystick(0).get_button(2): slow_speed = 0 #10
             if pygame.joystick.Joystick(0).get_button(3): slow_speed = 1 #11
 
@@ -118,12 +99,6 @@ while running:
             # axis_z = apply_dead_zones(axis_z, dead_zone)
             #print(f"Dead Zone: Axis X: {axis_x}, Axis Y: {axis_y}, Axis R:{axis_r}, Axis Z: {axis_z}")
 
-            # axis_x *= current_mode_ratio
-            # axis_y *= current_mode_ratio
-            # axis_r *= current_mode_ratio
-            # axis_z *= current_mode_ratio
-            # print(f"Current Mode: Axis X: {axis_x}, Axis Y: {axis_y}, Axis R:{axis_r}, Axis Z: {axis_z}")
-
             axis_x_scale = int((axis_x)*100) 
             axis_y_scale = int((axis_y)*-100)
             axis_r_scale = int((axis_r)*-100)
@@ -140,7 +115,6 @@ while running:
             #print("Thruster Percent Ideal;", thruster_percent_ideal)
 
             #if the thruster values are less than 100, then it will pass the if statment
-
             if max(abs(thruster_1), abs(thruster_2)) > 100:
                 ratio = (100/max(abs(thruster_1), abs(thruster_2))) #if the thruster value is over 100, then the ratio will take the value back down to 100
                 new_thruster_1_b = int(thruster_1 * ratio)
@@ -159,17 +133,6 @@ while running:
 
             thruster_percent_max = [thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b]
             #print("Thruster Percent Max: ", thruster_percent_max)
-
-            # thruster_5_b = abs(thruster_5_b)
-            # thruster_4_b = abs(thruster_4_b)
-            # thruster_3_b = abs(thruster_3_b)
-            # thruster_2_b = abs(thruster_2_b)
-            # thruster_1_b = abs(thruster_1_b)
-            
-            #print("Thruster_#_B: ", thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b)
-
-            # power_total = thruster_5_b + thruster_4_b + thruster_3_b + thruster_2_b + thruster_1_b
-            # print("...", power_total)
             
             power_total = sum(abs(num) for num in thruster_percent_max) #taking absolute value of each thruster and adding it together to get total amount of power
             #print("Power Total: ", power_total)
@@ -195,21 +158,7 @@ while running:
             thruster_values = [joystick_to_pwms(thruster_5_c), joystick_to_pwms(thruster_4_c), joystick_to_pwms(thruster_3_c), joystick_to_pwms(thruster_2_c), joystick_to_pwms(thruster_1_c)]
             #print("Thruster Values: ", thruster_values)
 
-            # print(f"Raw Values: Axis 0: {axis_x}, Axis 1: {axis_y}, Axis 2:{axis_r}, Axis 3: {axis_z}")
-            # print(f"Thruster %:", thruster_percent_ideal)
-            # print(f"Power Total:", power_total)
-            # print(f"Final %:", final_percentage)
             print(f"PWM Thruster Values: ", thruster_pwm_values)
-            # print(f"PWM Values: Axis 0: {axis_x_pwm_value}, Axis 1: {axis_r_pwm_value}, Axis 2: {axis_r_pwm_value}, Axis 3: {axis_z_pwm_value}")
-
-            # thruster_values = {
-            #         'thruster_1': thruster_1_b,
-            #         'thruster_2': thruster_2_b,
-            #         'thruster_3': thruster_3_b,
-            #         'thruster_4': thruster_4_b,
-            #         'thruster_5': thruster_5_b
-            #     }
-            # print(thruster_values)
 
             json_data = json.dumps(thruster_values)
             client_socket.sendall(json_data.encode('utf-8'))
@@ -217,41 +166,6 @@ while running:
             time.sleep(0.001)
 
 #make disable thrusters button
-ctrl_pressed = False
-custom_key_pressed = False
-
-def on_press(key):
-    global ctrl_pressed, custom_key_pressed
-
-    try:
-        if key == keyboard.Key.ctrl_l or key == keyboard.Key.ctrl_r:
-            ctrl_pressed = True
-        elif key.char == '1500':
-            custom_key_pressed = True
-
-        if ctrl_pressed and custom_key_pressed:
-            disable_thrusters()
-
-    except AttributeError:
-        pass
-
-def on_release(key):
-    global ctrl_pressed, custom_key_pressed
-
-    try:
-        if key == keyboard.Key.ctrl_l or key == keyboard.Key.ctrl_r:
-            ctrl_pressed = False
-        elif key.char == '1500':
-            custom_key_pressed = False
-
-    except AttributeError:
-        pass
-
-def disable_thrusters():
-    print("Thrusters disabled!")
-
-with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
-    listener.join()
 
 pygame.quit()
 client_socket.close()
