@@ -1,7 +1,7 @@
 import pygame
 import socket
 import time, json
-#from pynput import keyboard
+import keyboard
 #this code actually works so far (convert joystick values to pwm)
 #this code works (sending and recieving messages back and forth)
 
@@ -157,6 +157,19 @@ while running:
             time.sleep(0.001)
 
 #make disable thrusters button
+def set_thrusters(Value):
+    thruster_values = 1500
+    print(f"set thrusters to {Value}")
+
+def on_key_event(event):
+    if event.name == 't':
+        set_thrusters(1500)
+
+keyboard.on_press(on_key_event)
+
+print("press t to set thrusters to 1500, press esc to exit")
+keyboard.wait('esc')
+
 
 pygame.quit()
 client_socket.close()
