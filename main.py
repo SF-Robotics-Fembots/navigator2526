@@ -116,7 +116,7 @@ while running:
 
             #mulptply by 10% create a vairbale rotation_adjustment
             rotation_adjustment = int(round(axis_y_scale*0.25))
-            axis_r_scale = axis_r_scale - rotation_adjustment
+            axis_r_scale = axis_r_scale + rotation_adjustment
             
             thruster_5 = axis_z_scale #left vertical
             thruster_4 = axis_z_scale #right vertical
