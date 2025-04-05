@@ -103,7 +103,7 @@ while running:
             axis_x = apply_dead_zones(axis_x, dead_zone)
             axis_y = apply_dead_zones(axis_y, dead_zone)
             axis_r = apply_dead_zones(axis_r, dead_zone)
-            # axis_z = apply_dead_zones(axis_z, dead_zone)
+            axis_z = apply_dead_zones(axis_z, dead_zone)
             #print(f"Dead Zone: Axis X: {axis_x}, Axis Y: {axis_y}, Axis R:{axis_r}, Axis Z: {axis_z}")
 
             axis_x_scale = int((axis_x)*100) 
@@ -112,6 +112,10 @@ while running:
             axis_z_scale = int((axis_z)*-100) #flip verticals
             #print(f"Scale Values: Axis X: {axis_x_scale}, Axis Y: {axis_y_scale}, Axis R:{axis_r_scale}, Axis Z: {axis_z_scale}")
 
+            #mulptply by 10% create a vairbale rotation_adjustment
+            rotation_adjustment = int(round(axis_x_scale*0.1))
+            axis_r_scale = axis_r_scale - rotation_adjustment
+            
             thruster_5 = axis_z_scale #left vertical
             thruster_4 = axis_z_scale #right vertical
             thruster_3 = axis_x_scale #middle
