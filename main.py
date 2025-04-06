@@ -70,36 +70,38 @@ while running:
             print(f"Raw Values: Axis x: {axis_x}, Axis y: {axis_y}, Axis r:{axis_r}, Axis z: {axis_z}")
 
             #slow mode and disable thrusters
-            if pygame.joystick.Joystick(0).get_button(4): disable_thrusters = 0
-            if pygame.joystick.Joystick(0).get_button(5): disable_thrusters = 1
+            #if pygame.joystick.Joystick(0).get_button(4): disable_thrusters = 0
 
-            x_thruster = (pygame.joystick.Joystick(0).get_axis(0))
-            if disable_thrusters: x_thruster = x_thruster*disable_all_ratio
+#            x_thruster = (pygame.joystick.Joystick(0).get_axis(0))
+ #           if disable_thrusters: x_thruster = int(x_thruster*disable_all_ratio)
 
-            y_thruster = (pygame.joystick.Joystick(0).get_axis(1))
-            if disable_thrusters: y_thruster = y_thruster*disable_all_ratio
+#            y_thruster = (pygame.joystick.Joystick(0).get_axis(1))
+ #           if disable_thrusters: y_thruster = int(y_thruster*disable_all_ratio)
 
-            r_thruster = (pygame.joystick.Joystick(0).get_axis(2))
-            if disable_thrusters: r_thruster = r_thruster*disable_all_ratio
+  #          r_thruster = (pygame.joystick.Joystick(0).get_axis(2))
+   #         if disable_thrusters: r_thruster = int(r_thruster*disable_all_ratio)
 
-            z_thruster = (pygame.joystick.Joystick(0).get_axis(3))
-            if disable_thrusters: z_thruster = z_thruster*disable_all_ratio
+   #         z_thruster = (pygame.joystick.Joystick(0).get_axis(3))
+    #        if disable_thrusters: z_thruster = int(z_thruster*disable_all_ratio)
+     #       print(f"Disable: X: {x_thruster}, Y: {y_thruster}, R: {r_thruster}, Z: {z_thruster}")
 
-            if pygame.joystick.Joystick(0).get_button(2): slow_speed = 0 #fast
-            if pygame.joystick.Joystick(0).get_button(3): slow_speed = 1 #slow
+
+            if pygame.joystick.Joystick(0).get_button(5): slow_mode_ratio = 0
+            if pygame.joystick.Joystick(0).get_button(2): slow_mode_ratio = 1 #fast
+            if pygame.joystick.Joystick(0).get_button(3): slow_mode_ratio = 0.5 #slow
 
             x_speed = (pygame.joystick.Joystick(0).get_axis(0))
-            if slow_speed: x_speed = x_speed*slow_mode_ratio
+            x_speed = x_speed*slow_mode_ratio
 
             y_speed = (pygame.joystick.Joystick(0).get_axis(1))
-            if slow_speed: y_speed = y_speed*slow_mode_ratio
+            y_speed = y_speed*slow_mode_ratio
 
             r_speed = (pygame.joystick.Joystick(0).get_axis(2))
-            if slow_speed: r_speed = r_speed*slow_mode_ratio
+            r_speed = r_speed*slow_mode_ratio
 
             z_speed = (pygame.joystick.Joystick(0).get_axis(3))
-            if slow_speed: z_speed = z_speed*slow_mode_ratio
-            print(f"Speed: X: {x_speed}, Y: {y_speed}, R: {r_speed}, Z: {z_speed},")
+            z_speed = z_speed*slow_mode_ratio
+            print(f"Speed: X: {x_speed}, Y: {y_speed}, R: {r_speed}, Z: {z_speed}")
         
             axis_x = apply_dead_zones(axis_x, dead_zone)
             axis_y = apply_dead_zones(axis_y, dead_zone)
