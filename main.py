@@ -50,7 +50,7 @@ def joystick_to_pwms(value):
 #*50 or *100 then scale it after
 #if dont get value for 0 move according to that
 slow_speed = 0
-slow_mode_ratio = 0.5
+slow_mode_ratio = 0 #0.5
 disable_thrusters = 0
 disable_all_ratio = 0
 rotation_sensitivity_adj = 0.25
