@@ -86,7 +86,7 @@ while running:
      #       print(f"Disable: X: {x_thruster}, Y: {y_thruster}, R: {r_thruster}, Z: {z_thruster}")
 
 
-            if pygame.joystick.Joystick(0).get_button(5): slow_mode_ratio = 0
+            if pygame.joystick.Joystick(0).get_button(5): slow_mode_ratio = 0 #stop
             if pygame.joystick.Joystick(0).get_button(2): slow_mode_ratio = 1 #fast
             if pygame.joystick.Joystick(0).get_button(3): slow_mode_ratio = 0.5 #slow
 
