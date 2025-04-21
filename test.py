@@ -28,52 +28,61 @@ for x in range(90, 110):
     print("shield freq: " + str(x))
     shield.frequency = x
 
-    thrusterChannel5 = shield.channels[14]
-    thrusterChannel4 = shield.channels[1]
-    thrusterChannel3 = shield.channels[8]
-    thrusterChannel2 = shield.channels[15]
-    thrusterChannel1 = shield.channels[2]
+    thrusterChannel[5] = shield.channels[14]
+    thrusterChannel[4] = shield.channels[1]
+    thrusterChannel[3] = shield.channels[8]
+    thrusterChannel[2] = shield.channels[15]
+    thrusterChannel[1] = shield.channels[2]
     thrusterChannel5.duty_cycle = 0x2666
 
     pwm_values = [1000, 1500, 2000]
 
-    #5
-    throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
-    thrusterChannel5.duty_cycle = throttlePW
-    time.sleep(0)
-    print("5")
-    time.sleep(0.005)
-
-    #4
-    throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
-    thrusterChannel4.duty_cycle = throttlePW
-    time.sleep(0)
-    print("4")
-    time.sleep(0.005)
+    for z in range(0, 4):
+      for i in range(0, 5):
+        throttlePW = int((pwm_values[z]/10000*65536)*(x/100))
+        thrusterChannel[i].duty_cycle = throttlePW
+        print(i)
+        time.sleep(0.25)
 
 
-    #3
-    throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
-    thrusterChannel3.duty_cycle = throttlePW
-    time.sleep(0)
-    print("3")
-    time.sleep(0.005)
+
+    # #5
+    # throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
+    # thrusterChannel5.duty_cycle = throttlePW
+    # time.sleep(0)
+    # print("5")
+    # time.sleep(0.005)
+
+    # #4
+    # throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
+    # thrusterChannel4.duty_cycle = throttlePW
+    # time.sleep(0)
+    # print("4")
+    # time.sleep(0.005)
 
 
-    #2
-    throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
-    thrusterChannel2.duty_cycle = throttlePW
-    time.sleep(0)
-    print("2")
-    time.sleep(0.005)
+    # #3
+    # throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
+    # thrusterChannel3.duty_cycle = throttlePW
+    # time.sleep(0)
+    # print("3")
+    # time.sleep(0.005)
 
 
-    #1
-    throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
-    thrusterChannel1.duty_cycle = throttlePW
-    time.sleep(0)
-    print("1")
-    time.sleep(0.005)
+    # #2
+    # throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
+    # thrusterChannel2.duty_cycle = throttlePW
+    # time.sleep(0)
+    # print("2")
+    # time.sleep(0.005)
+
+
+    # #1
+    # throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
+    # thrusterChannel1.duty_cycle = throttlePW
+    # time.sleep(0)
+    # print("1")
+    # time.sleep(0.005)
 
     
     try:
