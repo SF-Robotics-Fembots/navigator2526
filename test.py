@@ -41,29 +41,34 @@ while True:
         throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
         thrusterChannel5.duty_cycle = throttlePW
         time.sleep(0)
+        print("5")
 
         #4
         throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
         thrusterChannel4.duty_cycle = throttlePW
         time.sleep(0)
+        print("4")
 
 
         #3
         throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
         thrusterChannel3.duty_cycle = throttlePW
         time.sleep(0)
+        print("3")
 
 
         #2
         throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
         thrusterChannel2.duty_cycle = throttlePW
         time.sleep(0)
+        print("2")
 
 
         #1
         throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
         thrusterChannel1.duty_cycle = throttlePW
         time.sleep(0)
+        print("1")
 
         
         try:
