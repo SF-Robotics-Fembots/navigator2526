@@ -24,61 +24,60 @@ shield = adafruit_pca9685.PCA9685(i2c)
 kit = ServoKit(channels=16)
 shield.frequency = 98 #was 100
 
-while True:
-    for x in range(90, 101):
-        print("shield freq: " + str(x))
-        shield.frequency = x
+for x in range(90, 101):
+    print("shield freq: " + str(x))
+    shield.frequency = x
 
-        thrusterChannel5 = shield.channels[14]
-        thrusterChannel4 = shield.channels[1]
-        thrusterChannel3 = shield.channels[8]
-        thrusterChannel2 = shield.channels[15]
-        thrusterChannel1 = shield.channels[2]
-        thrusterChannel5.duty_cycle = 0x2666
+    thrusterChannel5 = shield.channels[14]
+    thrusterChannel4 = shield.channels[1]
+    thrusterChannel3 = shield.channels[8]
+    thrusterChannel2 = shield.channels[15]
+    thrusterChannel1 = shield.channels[2]
+    thrusterChannel5.duty_cycle = 0x2666
 
-        pwm_values = [1000, 1500, 2000]
+    pwm_values = [1000, 1500, 2000]
 
-        #5
-        throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
-        thrusterChannel5.duty_cycle = throttlePW
-        time.sleep(0)
-        print("5")
+    #5
+    throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
+    thrusterChannel5.duty_cycle = throttlePW
+    time.sleep(0)
+    print("5")
+    time.sleep(0.005)
+
+    #4
+    throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
+    thrusterChannel4.duty_cycle = throttlePW
+    time.sleep(0)
+    print("4")
+    time.sleep(0.005)
+
+
+    #3
+    throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
+    thrusterChannel3.duty_cycle = throttlePW
+    time.sleep(0)
+    print("3")
+    time.sleep(0.005)
+
+
+    #2
+    throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
+    thrusterChannel2.duty_cycle = throttlePW
+    time.sleep(0)
+    print("2")
+    time.sleep(0.005)
+
+
+    #1
+    throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
+    thrusterChannel1.duty_cycle = throttlePW
+    time.sleep(0)
+    print("1")
+    time.sleep(0.005)
+
+    
+    try:
         time.sleep(0.005)
-
-        #4
-        throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
-        thrusterChannel4.duty_cycle = throttlePW
-        time.sleep(0)
-        print("4")
-        time.sleep(0.005)
-
-
-        #3
-        throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
-        thrusterChannel3.duty_cycle = throttlePW
-        time.sleep(0)
-        print("3")
-        time.sleep(0.005)
-
-
-        #2
-        throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
-        thrusterChannel2.duty_cycle = throttlePW
-        time.sleep(0)
-        print("2")
-        time.sleep(0.005)
-
-
-        #1
-        throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
-        thrusterChannel1.duty_cycle = throttlePW
-        time.sleep(0)
-        print("1")
-        time.sleep(0.005)
-
-        
-        try:
-            time.sleep(0.005)
-        except KeyboardInterrupt:
-            sys.exit()
-            #figure out how to exit porgram with command
+    except KeyboardInterrupt:
+        sys.exit()
+        #figure out how to exit porgram with command
