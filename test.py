@@ -39,7 +39,7 @@ for y in range(0,5):
    thrusterChannel[y].duty_cycle = 0x2666
 
 
-for x in range(90, 110):
+for x in range(90, 100):
     print("shield freq: " + str(x))
     shield.frequency = x
 
@@ -48,7 +48,7 @@ for x in range(90, 110):
         throttlePW = int((pwm_values[z]/10000*65536)*(x/100))
         thrusterChannel[i].duty_cycle = throttlePW
         print(i)
-        time.sleep(0.25)
+        time.sleep(0.05)
 
 
 
