@@ -25,6 +25,8 @@ shield = adafruit_pca9685.PCA9685(i2c)
 kit = ServoKit(channels=16)
 shield.frequency = 100 #was 100
 
+thrusterChannel = []
+
 thrusterChannel[0] = shield.channels[14]
 thrusterChannel[1] = shield.channels[1]
 thrusterChannel[2] = shield.channels[8]
