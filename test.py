@@ -25,7 +25,9 @@ shield = adafruit_pca9685.PCA9685(i2c)
 kit = ServoKit(channels=16)
 shield.frequency = 100 #was 100
 
-thrusterChannel = [shield.channels[14], shield.channels[11], shield.channels[8], shield.channels[15], shield.channels[10]]
+thrusterChannel = [shield.channels[11], shield.channels[10]]
+#thrusterChannel = [shield.channels[14], shield.channels[11], shield.channels[8], shield.channels[15], shield.channels[10]]
+
 
 # thrusterChannel5 = shield.channels[14] #left vertical
 # thrusterChannel4 = shield.channels[11] #right vertical 1
@@ -35,16 +37,17 @@ thrusterChannel = [shield.channels[14], shield.channels[11], shield.channels[8],
 
 pwm_values = [1000, 1500, 2000, 1500]
 
-for y in range(0,5):
-   thrusterChannel[y].duty_cycle = 0x2666
 
-
-for x in range(90, 100):
+for x in range(85, 105):
     print("shield freq: " + str(x))
     shield.frequency = x
 
+    for y in range(0,2):
+        thrusterChannel[y].duty_cycle = 0x2666
+
+
     for z in range(0, 4):
-      for i in range(0, 5):
+      for i in range(0, 2):
         throttlePW = int((pwm_values[z]/10000*65536)*(x/100))
         thrusterChannel[i].duty_cycle = throttlePW
         print(i)
