@@ -1,5 +1,5 @@
-# navigator2425
-Main repository for Navigator 24-25 season
+# navigator2526
+Main repository for Navigator 25-26 season
 print("hello world")
 print("hi")
 
