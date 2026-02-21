@@ -6,6 +6,7 @@ import adafruit_pca9685 #import PCA9685
 from adafruit_servokit import ServoKit
 import socket, time, json, sys
 
+# update ip on 2/14/2026
 host_ip = '192.168.1.68'#'10.0.0.8'
 port = 8080
 
@@ -37,6 +38,56 @@ thrusterChannel3 = shield.channels[8] #middle
 thrusterChannel2 = shield.channels[15] #left horizontal
 thrusterChannel1 = shield.channels[10] #right horizontal
 thrusterChannel5.duty_cycle = 0x2666
+
+throttle_in = 2200
+	throttlePW = int(throttle_in/10000*65536)
+	thrusterChannel1.duty_cycle = throttlePW
+	time.sleep(0)
+
+	throttle_in = 1500
+	throttlePW = int(throttle_in/10000*65536)
+	thrusterChannel1.duty_cycle = throttlePW
+	time.sleep(0)
+
+	throttle_in = 2200
+	throttlePW = int(throttle_in/10000*65536)
+	thrusterChannel2.duty_cycle = throttlePW
+	time.sleep(0)
+
+	throttle_in = 1500
+	throttlePW = int(throttle_in/10000*65536)
+	thrusterChannel2.duty_cycle = throttlePW
+	time.sleep(0)
+
+	throttle_in = 2200
+	throttlePW = int(throttle_in/10000*65536)
+	thrusterChannel3.duty_cycle = throttlePW
+	time.sleep(0 )
+
+	throttle_in = 1500
+	throttlePW = int(throttle_in/10000*65536)
+	thrusterChannel3.duty_cycle = throttlePW
+	time.sleep(0)
+
+	throttle_in = 2200
+	throttlePW = int(throttle_in/10000*65536)
+	thrusterChannel4.duty_cycle = throttlePW
+	time.sleep(0)
+
+	throttle_in = 1500
+	throttlePW = int(throttle_in/10000*65536)
+	thrusterChannel4.duty_cycle = throttlePW
+	time.sleep(0)
+
+	throttle_in = 2200
+	throttlePW = int(throttle_in/10000*65536)
+	thrusterChannel5.duty_cycle = throttlePW
+	time.sleep(0)
+
+	throttle_in = 1500
+	throttlePW = int(throttle_in/10000*65536)
+	thrusterChannel5.duty_cycle = throttlePW
+	time.sleep(0)
 
 datain = client_socket.recv(1024)
 client_socket.setblocking(False)
