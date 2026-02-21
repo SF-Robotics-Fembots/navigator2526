@@ -7,7 +7,7 @@ from adafruit_servokit import ServoKit
 import socket, time, json, sys
 
 # update ip on 2/14/2026
-host_ip = '192.168.1.68'#'10.0.0.8'
+host_ip = '192.168.1.67'#'10.0.0.8'
 port = 8080
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
