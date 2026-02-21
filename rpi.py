@@ -22,10 +22,10 @@ thruster_2 = 0 #2
 thruster_1 = 0 #1
 thrusters = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
 
-#i2c = busio.I2C(board.SCL, board.SDA)
-#print("{i2c}")
-#listofdev = i2c.scan()
-#print(listofdev)
+i2c = busio.I2C(board.SCL, board.SDA)
+print("{i2c}")
+listofdev = i2c.scan()
+print(listofdev)
 
 #i2c = board.I2C() # uses board.SCL and board.SDA
 shield = adafruit_pca9685.PCA9685(i2c)
