@@ -39,6 +39,7 @@ thrusterChannel2 = shield.channels[15] #left horizontal
 thrusterChannel1 = shield.channels[10] #right horizontal
 thrusterChannel5.duty_cycle = 0x2666
 
+
 throttle_in = 2200
 throttlePW = int(throttle_in/10000*65536)
 thrusterChannel1.duty_cycle = throttlePW
