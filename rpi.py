@@ -44,51 +44,61 @@ throttle_in = 2200
 throttlePW = int(throttle_in/10000*65536)
 thrusterChannel1.duty_cycle = throttlePW
 time.sleep(0)
+print("RH")
 
 throttle_in = 1500
 throttlePW = int(throttle_in/10000*65536)
 thrusterChannel1.duty_cycle = throttlePW
 time.sleep(0)
+print("RH")
 
 throttle_in = 2200
 throttlePW = int(throttle_in/10000*65536)
 thrusterChannel2.duty_cycle = throttlePW
 time.sleep(0)
+print("LH")
 
 throttle_in = 1500
 throttlePW = int(throttle_in/10000*65536)
 thrusterChannel2.duty_cycle = throttlePW
 time.sleep(0)
+print("LH")
 
 throttle_in = 2200
 throttlePW = int(throttle_in/10000*65536)
 thrusterChannel3.duty_cycle = throttlePW
 time.sleep(0 )
+print("M")
 
 throttle_in = 1500
 throttlePW = int(throttle_in/10000*65536)
 thrusterChannel3.duty_cycle = throttlePW
 time.sleep(0)
+print("M")
 
 throttle_in = 2200
 throttlePW = int(throttle_in/10000*65536)
 thrusterChannel4.duty_cycle = throttlePW
 time.sleep(0)
+print("RV")
 
 throttle_in = 1500
 throttlePW = int(throttle_in/10000*65536)
 thrusterChannel4.duty_cycle = throttlePW
 time.sleep(0)
+print("RV")
 
 throttle_in = 2200
 throttlePW = int(throttle_in/10000*65536)
 thrusterChannel5.duty_cycle = throttlePW
 time.sleep(0)
+print("LV")
 
 throttle_in = 1500
 throttlePW = int(throttle_in/10000*65536)
 thrusterChannel5.duty_cycle = throttlePW
 time.sleep(0)
+print("LV")
 
 datain = client_socket.recv(1024)
 client_socket.setblocking(False)
