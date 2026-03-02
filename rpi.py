@@ -34,9 +34,9 @@ shield.frequency = 91 #was 100
 
 thrusterChannel5 = shield.channels[15] #left vertical
 thrusterChannel4 = shield.channels[1] #right vertical
-thrusterChannel3 = shield.channels[0] #middle
+thrusterChannel3 = shield.channels[2] #middle
 thrusterChannel2 = shield.channels[14] #left horizontal
-thrusterChannel1 = shield.channels[2] #right horizontal
+thrusterChannel1 = shield.channels[0] #right horizontal
 thrusterChannel5.duty_cycle = 0x2666
 
 
