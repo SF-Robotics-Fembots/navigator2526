@@ -3,7 +3,7 @@ import threading
 import time
 import camera1, camera2, camera3, camera4, camera5
 cameras= camera1, camera2, camera3, camera4, camera5
-   #1:front, 2:rear, 3:left, 4:right, 5:down
+#    #1:front, 2:rear, 3:left, 4:right, 5:down
 
 caps = {
     "front": cv2.VideoCapture(0),
