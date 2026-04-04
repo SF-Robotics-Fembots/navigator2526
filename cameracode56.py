@@ -1,16 +1,15 @@
 import cv2
 import threading
 import time
-import camera1, camera2, camera3, camera4, camera5
-cameras= camera1, camera2, camera3, camera4, camera5
-#    #1:front, 2:rear, 3:left, 4:right, 5:down
+import camera0, camera1, camera2, camera3
+cameras= camera0, camera1, camera2, camera3
+#    0: front, 1:forward down, 2:rear, 3:down
 
 caps = {
     "front": cv2.VideoCapture(0),
-    "down": cv2.VideoCapture(1),
+    "forward_down": cv2.VideoCapture(1),
     "rear": cv2.VideoCapture(2),
-    "left": cv2.VideoCapture(3),
-    "right": cv2.VideoCapture(4),
+    "down": cv2.VideoCapture(3),
 }
 class CameraThread(threading.Thread):
     def __init__(self, cam_id, name, cap):
@@ -36,10 +35,9 @@ class CameraManager:
        self.frames= {}
        self.caps= {
               "front": cv2.VideoCapture(0),
-              "down": cv2.VideoCapture(1),
+              "forward_down": cv2.VideoCapture(1),
               "rear": cv2.VideoCapture(2),
-              "left": cv2.VideoCapture(3),
-              "right": cv2.VideoCapture(4),
+              "down": cv2.VideoCapture(3),
        }
        self.running= True
        for name in self.caps:
@@ -55,10 +53,9 @@ class CameraManager:
 
 cameras= [
    CameraThread(0, "front"), 
-   CameraThread(1, "down"),
+   CameraThread(1, "forward_down"),
    CameraThread(2, "rear"),
-   CameraThread(3, "left"),
-   CameraThread(4, "right") 
+   CameraThread(3, "down") 
 ]
 for cam in cameras:
    cam.start()
