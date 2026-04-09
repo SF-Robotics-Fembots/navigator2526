@@ -24,7 +24,7 @@ def main():
     # -------- I2C + PCA9685 SETUP --------
     i2c = busio.I2C(board.SCL, board.SDA)
     shield = adafruit_pca9685.PCA9685(i2c)
-    shield.external_clock = True
+    #shield.external_clock = True
     shield.frequency = freq  # <-- user-defined frequency
 
     # Thruster channels
