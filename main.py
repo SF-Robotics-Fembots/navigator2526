@@ -38,7 +38,7 @@ def apply_dead_zones(value, threshold):
 
 #the actual conversion from percentage to pwm
 def joystick_to_pwms(value):
-    pwm_value = 1500 + (value * 5) #1000-2000
+    pwm_value = 1500 + (value * 5) #1000-2000 - was 1500 +
     pwm_value = max(1000, min(2000, pwm_value))
     return int(pwm_value)
 
@@ -132,7 +132,8 @@ while running:
             power_total = sum(abs(num) for num in thruster_percent_max) #taking absolute value of each thruster and adding it together to get total amount of power
             #print("Power Total: ", power_total)
 
-            power_max = 275 #max amount of power we can use (percentage) ex: 800% (mr. grindstaff) test 250, was 800, 650
+            power_max = 195
+             #max amount of power we can use (percentage) ex: 800% (mr. grindstaff) test 250, was 800, 650
             power_ratio = 1
             if (power_total > power_max):
                 power_ratio = power_max/power_total
